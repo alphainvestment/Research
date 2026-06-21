@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Investment · Resumen de Mercados · Mon Jun 22 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#1a2744;--bg:#141c30;--bg-card:#1a2440;--bg-alt:#111827;--border:#243058;--text:#dce5f5;--text-soft:#9aaac8;--muted:#5c6e8a;--accent:#3a6db5;--white:#ffffff;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13.5px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.header{background:var(--bg-card);border-bottom:1px solid var(--border);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.header-center{text-align:center;}
+.header-title{font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;color:var(--white);letter-spacing:.5px;}
+.header-date{font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.5px;}
+.header-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);border:1px solid var(--border);padding:5px 13px;border-radius:3px;}
+.wrap{max-width:900px;margin:0 auto;padding:36px 20px 60px;}
+.fx-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:7px;overflow:hidden;margin-bottom:40px;}
+.fx-card{background:var(--bg-card);padding:18px 20px;text-align:center;}
+.fx-label{font-size:10px;text-transform:uppercase;letter-spacing:1.3px;color:var(--text);font-weight:600;margin-bottom:8px;}
+.fx-value{font-size:21px;font-weight:600;color:var(--white);letter-spacing:-.3px;}
+.fx-row{display:flex;gap:14px;margin-top:5px;justify-content:center;}
+.fx-chip{font-size:10.5px;color:var(--text-soft);}
+.fx-chip span{color:var(--muted);}
+.sec{padding:28px 0;}
+.sec-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:7px;overflow:hidden;}
+.sec-inner.alt{background:var(--bg-alt);}
+.sec-bar{padding:12px 22px;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;}
+.sec-bar-title{font-size:15px;font-weight:700;color:var(--white);letter-spacing:.1px;}
+.sec-bar-sub{font-size:10px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);}
+.news-list{padding:2px 0;}
+.news-item{display:flex;gap:16px;padding:15px 22px;border-bottom:1px solid var(--border);}
+.news-item:last-child{border-bottom:none;}
+.news-dash{color:var(--accent);flex-shrink:0;font-size:15px;line-height:1.55;margin-top:1px;}
+.news-body{color:var(--text-soft);font-size:13.5px;line-height:1.72;}
+.news-tag{font-weight:600;color:var(--text);}
+.news-body-text{margin-top:6px;}
+.tbl-wrap{overflow-x:auto;padding:0 22px 20px;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+thead th{text-align:right;padding:10px 10px 9px 8px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;}
+thead th:first-child{text-align:left;padding-left:0;}
+tbody tr{border-bottom:1px solid rgba(34,45,72,.7);}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:rgba(58,109,181,.05);}
+tbody td{padding:7px 10px 7px 8px;text-align:right;color:var(--text-soft);white-space:nowrap;}
+tbody td:first-child{text-align:left;padding-left:0;font-weight:500;color:var(--text);}
+.subhdr{padding:8px 0 4px!important;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--muted);text-align:left!important;}
+.chart-block{border-top:1px solid var(--border);padding:24px 24px 28px;}
+.chart-block-title{font-size:12px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px;}
+.disclaimer{margin-top:36px;padding:16px 20px;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);font-size:11px;color:var(--muted);line-height:1.75;}
+.footer{background:var(--bg-card);border-top:1px solid var(--border);padding:16px 52px;text-align:center;}
+.footer p{color:var(--muted);font-size:10.5px;}
+@media(max-width:768px){
+  .header{padding:14px 16px;height:auto;flex-direction:column;align-items:flex-start;gap:10px;}
+  .header-center{text-align:left;width:100%;}
+  .header-tag{display:none;}
+  .wrap{padding:20px 14px 40px;}
+  .fx-strip{grid-template-columns:1fr 1fr;}
+  table{font-size:11px;}
+  .sec-bar-sub{display:none;}
+}</style>
+</head>
+<body>
+<header class="header">
+  <div><svg width="140" height="44" viewBox="0 0 200 58" xmlns="http://www.w3.org/2000/svg">
+    <text x="0" y="48" font-family="Georgia,serif" font-size="52" fill="#3a6db5" font-style="italic">α</text>
+    <text x="54" y="34" font-family="'Gill Sans','Trebuchet MS',Arial,sans-serif" font-size="22" fill="#dce5f5" letter-spacing="2">ALPHA</text>
+    <text x="58" y="50" font-family="'Gill Sans','Trebuchet MS',Arial,sans-serif" font-size="10.5" fill="#5c6e8a" letter-spacing="3.5">INVESTMENT</text>
+  </svg></div>
+  <div class="header-center"><div class="header-title">Resumen de Mercados</div><div class="header-date">Mon Jun 22 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</div></div>
+  <div class="header-tag">Informe Semanal</div>
+</header>
+<main class="wrap">
+  <div class="fx-strip">
+  <div class="fx-card"><div class="fx-label">Dólar A3500</div><div class="fx-value">$1461</div><div class="fx-row"><span class="fx-chip"><span>Var.</span> 0,013176144244105403%</span></div></div>
+  <div class="fx-card"><div class="fx-label">MEP Abierto</div><div class="fx-value">$1478</div><div class="fx-row"><span class="fx-chip"><span>Var.</span> 0,01580756013745699%</span><span class="fx-chip"><span>Brecha</span> 0,012%</span></div></div>
+  <div class="fx-card"><div class="fx-label">CCL (t+1)</div><div class="fx-value">$1509</div><div class="fx-row"><span class="fx-chip"><span>Var.</span> -0,001323626737260053%</span><span class="fx-chip"><span>Brecha</span> 0,033%</span></div></div>
+  <div class="fx-card"><div class="fx-label">Canje MEP/CCL</div><div class="fx-value">0,021%</div><div class="fx-row"><span class="fx-chip" style="color:var(--muted);">spread implícito</span></div></div>
+  </div>
+  <div class="sec"><div class="sec-inner">
+    <div class="sec-bar"><span class="sec-bar-title">Novedades de la Semana</span></div>
+    <div class="news-list">
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Exportaciones</span><div class="news-body-text">Las exportaciones de mayo alcanzaron un récord histórico de USD 9.500 millones, mientras que el superávit comercial llegó a USD 3.500 millones. El avance estuvo impulsado por una suba interanual de 34,4% en las exportaciones, destacándose energía con un crecimiento de 167%, mientras que las importaciones retrocedieron 7%. En el acumulado del año, las exportaciones suman USD 40.400 millones, con un crecimiento de 24,3%, y las ventas industriales de enero a mayo también marcaron un máximo histórico.</div></span></div>
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Compras BCRA</span><div class="news-body-text">El Banco Central adquirió USD 70 millones el jueves, equivalentes al 12,4% del volumen operado en el MULC. Con esta intervención, las compras acumuladas en 2026 ascienden a USD 10.800 millones.</div></span></div>
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">MSCI</span><div class="news-body-text">La revisión 2026 de MSCI no introduce cambios para Argentina, que continúa observada por restricciones a los flujos de capital, el proceso de liberalización cambiaria, la estabilidad institucional y aspectos de infraestructura de mercado como clearing, préstamo de acciones y short selling. Estos puntos, ya señalados en 2025, siguen limitando las posibilidades de una reclasificación a mercado Frontier o Emerging. La revisión formal finaliza el 23 de junio.</div></span></div>
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Superávits</span><div class="news-body-text">En mayo, el sector público registró un superávit primario de $1,92bn y un resultado financiero positivo de $479M. En los primeros cinco meses del año, el superávit primario acumulado llegó al 0,7% del PIB, con una caída real del gasto primario de 2,2% interanual. Con estos números, el Gobierno se mantiene alineado con la meta acordada con el FMI de alcanzar un superávit primario de 1,4% del PIB en 2026.</div></span></div>
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Paquete de Garantías</span><div class="news-body-text">El Banco Mundial aprobó un paquete de garantías por USD 2.000 millones para apoyar el refinanciamiento de deuda argentina, mediante una estructura BIRF/MIGA que cubre el 95% del servicio de un préstamo comercial a 6 años, con 3 años de gracia y tasas cercanas al 6%. A esto se suma la garantía de USD 550 millones aprobada por el BID, la primera de este tipo del organismo, que podría movilizar hasta USD 1.200 millones de financiamiento privado. En conjunto, las garantías multilaterales alcanzan USD 2.550 millones, con la posibilidad de que CAF agregue entre USD 250 millones y USD 500 millones adicionales en julio.</div></span></div>
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Inflación</span><div class="news-body-text">La inflación de mayo fue de 2,1% mensual, por debajo del 2,6% de abril, mientras que la núcleo se ubicó en 1,9%; ambos registros marcaron mínimos de ocho meses. Con este dato, el IPC acumuló 14,7% en el año y 33,2% interanual. La mayor presión vino de los precios estacionales, que avanzaron 3,5% impulsados principalmente por verduras.</div></span></div>
+    </div>
+  </div></div>
+  <div class="sec"><div class="sec-inner alt">
+    <div class="sec-bar"><span class="sec-bar-title">Bopreales</span><span class="sec-bar-sub">BCRA · Hard Dollar</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Especie</th><th>Paridad</th><th>YTM</th><th>MD</th><th>Vencimiento</th></tr></thead>
+      <tbody>
+        <tr><td>BPOA7</td><td>0,986%</td><td>0,065%</td><td>1,05</td><td>Sun Oct 31 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>BPOB7</td><td>0,988%</td><td>0,062%</td><td>1,05</td><td>Sun Oct 31 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>BPOC7</td><td>0,983%</td><td>0,067%</td><td>1,05</td><td>Sun Oct 31 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>BPOD7</td><td>0,984%</td><td>0,066%</td><td>1,05</td><td>Sun Oct 31 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>BPOA8</td><td>0,887%</td><td>0,086%</td><td>2,19</td><td>Mon Oct 30 2028 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>BPOB8</td><td>0,887%</td><td>0,086%</td><td>2,19</td><td>Mon Oct 30 2028 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+      </tbody></table></div>
+  </div></div>
+  <div class="sec"><div class="sec-inner">
+    <div class="sec-bar"><span class="sec-bar-title">Globales &amp; Bonares</span><span class="sec-bar-sub">Soberanos · Hard Dollar</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Especie</th><th>Paridad</th><th>YTM</th><th>MD</th><th>Vencimiento</th><th>Ley</th></tr></thead>
+      <tbody>
+        <tr><td>AO27</td><td>0,997%</td><td>0,064%</td><td>1,26</td><td>Sun Oct 31 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>ARG</td></tr>
+        <tr><td>AO28</td><td>0,94%</td><td>0,092%</td><td>2,09</td><td>Tue Oct 31 2028 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>ARG</td></tr>
+        <tr><td>AN29</td><td>0,921%</td><td>0,095%</td><td>2,97</td><td>Fri Nov 30 2029 05:00:00 GMT-0300 (hora estándar de Argentina)</td><td>ARG</td></tr>
+        <tr><td>AL29</td><td>0,895%</td><td>0,088%</td><td>1,39</td><td>Mon Jul 09 2029 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>ARG</td></tr>
+        <tr><td>GD29</td><td>0,913%</td><td>0,073%</td><td>1,42</td><td>Mon Jul 09 2029 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>NY</td></tr>
+        <tr><td>AL30</td><td>0,866%</td><td>0,09%</td><td>1,82</td><td>Wed Jul 09 1930 04:00:00 GMT-0400 (hora estándar de Argentina)</td><td>ARG</td></tr>
+        <tr><td>GD30</td><td>0,887%</td><td>0,077%</td><td>1,85</td><td>Wed Jul 09 1930 04:00:00 GMT-0400 (hora estándar de Argentina)</td><td>NY</td></tr>
+        <tr><td>AL35</td><td>0,775%</td><td>0,097%</td><td>5,27</td><td>Tue Jul 09 1935 04:00:00 GMT-0400 (hora estándar de Argentina)</td><td>ARG</td></tr>
+        <tr><td>GD35</td><td>0,802%</td><td>0,09%</td><td>5,32</td><td>Tue Jul 09 1935 04:00:00 GMT-0400 (hora estándar de Argentina)</td><td>NY</td></tr>
+        <tr><td>AE38</td><td>0,798%</td><td>0,1%</td><td>4,5</td><td>Sun Jan 09 1938 05:00:00 GMT-0300 (hora estándar de Argentina)</td><td>ARG</td></tr>
+        <tr><td>GD38</td><td>0,837%</td><td>0,089%</td><td>4,62</td><td>Sun Jan 09 1938 05:00:00 GMT-0300 (hora estándar de Argentina)</td><td>NY</td></tr>
+        <tr><td>AL41</td><td>0,729%</td><td>0,096%</td><td>5,78</td><td>Wed Jul 09 1941 04:00:00 GMT-0400 (hora estándar de Argentina)</td><td>ARG</td></tr>
+        <tr><td>GD41</td><td>0,749%</td><td>0,091%</td><td>5,86</td><td>Wed Jul 09 1941 04:00:00 GMT-0400 (hora estándar de Argentina)</td><td>NY</td></tr>
+        <tr><td>GD46</td><td>0,768%</td><td>0,089%</td><td>6,14</td><td>Tue Jul 09 1946 04:00:00 GMT-0400 (hora estándar de Argentina)</td><td>NY</td></tr>
+      </tbody></table></div>
+    <div class="chart-block"><div class="chart-block-title">Curva Soberanos · YTM vs MD</div>
+      <div class="chart-canvas-wrap" style="height:320px;"><canvas id="chartSob"></canvas></div></div>
+  </div></div>
+  <div class="sec"><div class="sec-inner alt">
+    <div class="sec-bar"><span class="sec-bar-title">Lecaps &amp; Boncaps</span><span class="sec-bar-sub">Tasa Fija · ARS</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Ticker</th><th>YTM Nom.</th><th>YTM</th><th>TEM</th><th>MD</th><th>Vencimiento</th></tr></thead>
+      <tbody>
+        <tr><td colspan="6" class="subhdr">Letras Capitalizables</td></tr>
+        <tr><td>S17L6</td><td>0,2091%</td><td>0,2471%</td><td>0,0176%</td><td>0,06</td><td>Fri Jul 17 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>S31L6</td><td>0,2129%</td><td>0,2353%</td><td>0,0179%</td><td>0,1</td><td>Fri Jul 31 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>S14G6</td><td>0,2222%</td><td>0,2455%</td><td>0,0183%</td><td>0,13</td><td>Fri Aug 14 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>S31G6</td><td>0,2174%</td><td>0,2362%</td><td>0,0179%</td><td>0,17</td><td>Mon Aug 31 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>S15S6</td><td>0,2372%</td><td>0,2532%</td><td>0,0192%</td><td>0,21</td><td>Tue Sep 15 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>S30S6</td><td>0,2419%</td><td>0,2515%</td><td>0,0195%</td><td>0,24</td><td>Wed Sep 30 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>S30O6</td><td>0,2362%</td><td>0,2414%</td><td>0,019%</td><td>0,32</td><td>Fri Oct 30 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>S30N6</td><td>0,2314%</td><td>0,2395%</td><td>0,0184%</td><td>0,39</td><td>Mon Nov 30 2026 05:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td colspan="6" class="subhdr">Bonos Capitalizables</td></tr>
+        <tr><td>T30J6</td><td>0,2088%</td><td>0,2456%</td><td>0,0177%</td><td>0,02</td><td>Tue Jun 30 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>T15E7</td><td>0,2555%</td><td>0,2462%</td><td>0,0199%</td><td>0,5</td><td>Fri Jan 15 2027 05:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>T30A7</td><td>0,2702%</td><td>0,2593%</td><td>0,0204%</td><td>0,76</td><td>Fri Apr 30 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>T31Y7</td><td>0,2709%</td><td>0,2586%</td><td>0,0203%</td><td>0,83</td><td>Mon May 31 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>T30J7</td><td>0,2531%</td><td>0,2424%</td><td>0,0189%</td><td>0,91</td><td>Wed Jun 30 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+      </tbody></table></div>
+    <div class="chart-block"><div class="chart-block-title">Curva Letras del Tesoro · YTM vs MD</div>
+      <div class="chart-canvas-wrap" style="height:320px;"><canvas id="chartLec"></canvas></div></div>
+  </div></div>
+  <div class="sec"><div class="sec-inner">
+    <div class="sec-bar"><span class="sec-bar-title">Boncer</span><span class="sec-bar-sub">Ajuste CER</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Ticker</th><th>Paridad</th><th>YTM real</th><th>MD</th><th>Vencimiento</th></tr></thead>
+      <tbody>
+        <tr><td>TZX26</td><td>1,004%</td><td>-0,16%</td><td>0</td><td>Tue Jun 30 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TX26</td><td>0,202%</td><td>0,001%</td><td>0,4</td><td>Mon Nov 09 2026 05:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZXO6</td><td>1,001%</td><td>-0,003%</td><td>0,4</td><td>Fri Oct 30 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZXD6</td><td>0,993%</td><td>0,014%</td><td>0,5</td><td>Tue Dec 15 2026 05:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZXM7</td><td>0,982%</td><td>0,023%</td><td>0,8</td><td>Wed Mar 31 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZXA7</td><td>0,982%</td><td>0,021%</td><td>0,8</td><td>Fri Apr 30 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZXY7</td><td>0,976%</td><td>0,027%</td><td>0,9</td><td>Sun May 30 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZX27</td><td>0,972%</td><td>0,028%</td><td>1</td><td>Wed Jun 30 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZXS7</td><td>0,94%</td><td>0,05%</td><td>1,2</td><td>Thu Sep 30 2027 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZXD7</td><td>0,924%</td><td>0,055%</td><td>1,4</td><td>Wed Dec 15 2027 05:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZXM8</td><td>0,905%</td><td>0,058%</td><td>1,7</td><td>Fri Mar 31 2028 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZX28</td><td>0,871%</td><td>0,071%</td><td>2</td><td>Fri Jun 30 2028 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZXS8</td><td>0,851%</td><td>0,074%</td><td>2,2</td><td>Fri Sep 29 2028 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TX28</td><td>0,485%</td><td>0,047%</td><td>1,3</td><td>Thu Nov 09 2028 05:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TZXM9</td><td>0,818%</td><td>0,075%</td><td>2,7</td><td>Wed Mar 28 2029 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>TX31</td><td>0,858%</td><td>0,079%</td><td>2,8</td><td>Mon Nov 30 1931 05:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>DICP</td><td>0,948%</td><td>0,077%</td><td>3</td><td>Sun Dec 31 1933 05:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>PARP</td><td>0,655%</td><td>0,085%</td><td>6,5</td><td>Sat Dec 31 1938 05:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>CUAP</td><td>0,6%</td><td>0,083%</td><td>9,8</td><td>Mon Dec 31 1945 05:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>X31L6</td><td>1,007%</td><td>-0,062%</td><td>0,1</td><td>Fri Jul 31 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>X30S6</td><td>1,006%</td><td>-0,021%</td><td>0,3</td><td>Wed Sep 30 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+        <tr><td>X30N6</td><td>0,995%</td><td>0,012%</td><td>0,4</td><td>Mon Nov 30 2026 05:00:00 GMT-0300 (hora estándar de Argentina)</td></tr>
+      </tbody></table></div>
+    <div class="chart-block"><div class="chart-block-title">Curva Boncer · YTM real vs MD</div>
+      <div class="chart-canvas-wrap" style="height:320px;"><canvas id="chartCer"></canvas></div></div>
+  </div></div>
+  <div class="sec"><div class="sec-inner alt">
+    <div class="sec-bar"><span class="sec-bar-title">Obligaciones Negociables</span><span class="sec-bar-sub">Hard Dollar</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Emisor</th><th>Ticker</th><th>Precio</th><th>Paridad</th><th>YTM</th><th>DM</th><th>Vto.</th><th>Industria</th></tr></thead>
+      <tbody>
+        <tr><td>Aluar</td><td>LMS7D</td><td>—</td><td>1,15%</td><td>0,044%</td><td>1,1</td><td>Wed Oct 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Mat. Básicos</td></tr>
+        <tr><td>Arcor</td><td>RCCRD</td><td>—</td><td>1,03%</td><td>0,033%</td><td>0,8</td><td>Wed May 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Alimentos</td></tr>
+        <tr><td>Arcor</td><td>RC1CD</td><td>—</td><td>1,06%</td><td>0,064%</td><td>4,7</td><td>jul-33</td><td>Alimentos</td></tr>
+        <tr><td>Banco Galicia</td><td>BYCHD</td><td>—</td><td>1,06%</td><td>0,05%</td><td>2,1</td><td>Wed Oct 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Financiero</td></tr>
+        <tr><td>CGC</td><td>CP36D</td><td>—</td><td>0,98%</td><td>0,081%</td><td>1,2</td><td>Tue Oct 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Cresud</td><td>CS47D</td><td>—</td><td>1,03%</td><td>0,059%</td><td>2,2</td><td>Sat Nov 28 2026 05:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Agro</td></tr>
+        <tr><td>Edenor</td><td>DNC3D</td><td>—</td><td>1,01%</td><td>0,061%</td><td>0,4</td><td>Thu Nov 26 2026 05:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Electricidad</td></tr>
+        <tr><td>Edenor</td><td>DNC5D</td><td>—</td><td>1,06%</td><td>0,066%</td><td>1,9</td><td>Fri Aug 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Electricidad</td></tr>
+        <tr><td>Edenor</td><td>DNC7D</td><td>—</td><td>1,08%</td><td>0,072%</td><td>2,8</td><td>Fri Oct 30 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Electricidad</td></tr>
+        <tr><td>IRSA</td><td>IRCND</td><td>—</td><td>1,02%</td><td>0,045%</td><td>1,2</td><td>Tue Oct 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Real Estate</td></tr>
+        <tr><td>IRSA</td><td>IRCOD</td><td>—</td><td>1,04%</td><td>0,059%</td><td>2,9</td><td>Thu Oct 29 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Real Estate</td></tr>
+        <tr><td>John Deere</td><td>HJCFD</td><td>—</td><td>1%</td><td>0,052%</td><td>0,3</td><td>Mon Oct 26 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Financiero</td></tr>
+        <tr><td>John Deere</td><td>HJCID</td><td>—</td><td>1,01%</td><td>0,059%</td><td>0,9</td><td>Wed May 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Financiero</td></tr>
+        <tr><td>John Deere</td><td>HJCHD</td><td>—</td><td>1,01%</td><td>0,063%</td><td>1,4</td><td>Wed Jan 28 2026 05:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Financiero</td></tr>
+        <tr><td>John Deere</td><td>HJCGD</td><td>—</td><td>1,01%</td><td>0,063%</td><td>2,1</td><td>Wed Oct 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Financiero</td></tr>
+        <tr><td>Loma Negra</td><td>LOC5D</td><td>—</td><td>1,03%</td><td>0,046%</td><td>1</td><td>Mon Apr 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Construcción</td></tr>
+        <tr><td>PAE</td><td>PN34D</td><td>—</td><td>1,02%</td><td>0,034%</td><td>1,4</td><td>Sun Sep 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>PAE</td><td>PN37D</td><td>—</td><td>1,03%</td><td>0,05%</td><td>2,2</td><td>Sat Nov 28 2026 05:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>PAE</td><td>PN35D</td><td>—</td><td>1,05%</td><td>0,054%</td><td>2,9</td><td>Tue Sep 29 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>PAE</td><td>PN36D</td><td>—</td><td>1,07%</td><td>0,058%</td><td>4,4</td><td>nov-31</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>PAE</td><td>PNXCD</td><td>—</td><td>1,11%</td><td>0,059%</td><td>4</td><td>abr-32</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCQD</td><td>—</td><td>1,05%</td><td>0,049%</td><td>1,9</td><td>Fri Aug 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCND</td><td>—</td><td>1,02%</td><td>0,048%</td><td>2,1</td><td>Wed Oct 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCMD</td><td>—</td><td>1,09%</td><td>0,061%</td><td>4,2</td><td>sep-31</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCOD</td><td>—</td><td>1,08%</td><td>0,068%</td><td>6,2</td><td>dic-34</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pluspetrol</td><td>PLC1D</td><td>—</td><td>1,02%</td><td>0,046%</td><td>1,5</td><td>Wed Jan 28 2026 05:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pluspetrol</td><td>PLC3D</td><td>—</td><td>1,04%</td><td>0,049%</td><td>1,7</td><td>Tue Apr 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pluspetrol</td><td>PLC2D</td><td>—</td><td>1,07%</td><td>0,058%</td><td>4,4</td><td>Fri Jan 30 2026 05:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>T. Naranja</td><td>T641D</td><td>—</td><td>1,02%</td><td>0,051%</td><td>0,8</td><td>Mon Apr 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Financiero</td></tr>
+        <tr><td>Tecpetrol</td><td>TTC8D</td><td>—</td><td>1,01%</td><td>0,039%</td><td>1,3</td><td>Tue Oct 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Tecpetrol</td><td>TTC9D</td><td>—</td><td>1,04%</td><td>0,055%</td><td>2,9</td><td>Thu Oct 29 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Tecpetrol</td><td>TTCAD</td><td>—</td><td>1,08%</td><td>0,06%</td><td>4,4</td><td>ene-33</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Telecom</td><td>TLCOD</td><td>—</td><td>1,03%</td><td>0,058%</td><td>2,2</td><td>Sat Nov 28 2026 05:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Telecom</td></tr>
+        <tr><td>TGS</td><td>TSC3D</td><td>—</td><td>1,1%</td><td>0,065%</td><td>4</td><td>Fri Jul 31 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>YPF</td><td>YMCID</td><td>—</td><td>1,07%</td><td>0,04%</td><td>1,4</td><td>Mon Jun 29 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>YPF</td><td>YMCJD</td><td>—</td><td>1,05%</td><td>0,06%</td><td>4,7</td><td>sep-33</td><td>Oil &amp; Gas</td></tr>
+      </tbody></table></div>
+    <div class="chart-block"><div class="chart-block-title">Curva ONs · YTM vs DM</div>
+      <div class="chart-canvas-wrap" style="height:500px;"><canvas id="chartONs"></canvas></div></div>
+  </div></div>
+  <div class="disclaimer">
+    Este reporte fue elaborado con propósito puramente informativo. Las opiniones vertidas sobre predicciones de mercado de cualquier tipo no deben asumirse como invitaciones ni sugerencias de comprar o vender activo alguno. La información ha sido compilada de fuentes consideradas confiables y si bien se han tomado recaudos razonables, no podemos garantizar plena exactitud o exhaustividad de la información ni de los resultados analíticos. Todas las opiniones y estimaciones constituyen nuestro juicio al momento de publicación y están sujetas a cambio sin previo aviso.
+  </div>
+</main>
+<footer class="footer"><p>Alpha Investment · www.alphainvestment.com.ar · Mon Jun 22 2026 04:00:00 GMT-0300 (hora estándar de Argentina)</p></footer>
+<script>
+Chart.register(ChartDataLabels);
+Chart.defaults.font.family = "'Inter',system-ui,sans-serif";
+Chart.defaults.font.size = 10;
+Chart.defaults.color = '#9aaac8';
+const GRID = 'rgba(58,109,181,0.10)';
+const DOT  = '#6fa3e8';
+function makeChart(id, pts) {
+  const ctx = document.getElementById(id);
+  if (!ctx) return;
+  new Chart(ctx, {
+    type: 'scatter',
+    data: { datasets: [{ data: pts, backgroundColor: DOT, pointRadius: 5, pointHoverRadius: 7 }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      layout: { padding: { top: 26, right: 30, bottom: 4, left: 4 } },
+      plugins: {
+        legend: { display: false },
+        tooltip: { backgroundColor: '#192035', borderColor: '#222d48', borderWidth: 1, titleColor: '#dce5f5', bodyColor: '#9aaac8',
+          callbacks: { label: c => `${c.raw.label}: ${c.raw.y.toFixed(1)}%` } },
+        datalabels: { color: '#c0d0ec', font: { size: 9.5 }, formatter: v => v.label, anchor: 'end', align: 'top', offset: 3, clip: false }
+      },
+      scales: {
+        x: { grid:{color:GRID,lineWidth:0.5}, ticks:{color:'#5c6e8a',font:{size:10}} },
+        y: { grid:{color:GRID,lineWidth:0.5}, ticks:{color:'#5c6e8a',font:{size:10},callback:v=>v.toFixed(1)+'%'} }
+      }
+    }
+  });
+}
+makeChart('chartSob', [{x:1.26,y:0.064,label:'AO27'},{x:2.09,y:0.092,label:'AO28'},{x:2.97,y:0.095,label:'AN29'},{x:1.39,y:0.088,label:'AL29'},{x:1.42,y:0.073,label:'GD29'},{x:1.82,y:0.09,label:'AL30'},{x:1.85,y:0.077,label:'GD30'},{x:5.27,y:0.097,label:'AL35'},{x:5.32,y:0.09,label:'GD35'},{x:4.5,y:0.1,label:'AE38'},{x:4.62,y:0.089,label:'GD38'},{x:5.78,y:0.096,label:'AL41'},{x:5.86,y:0.091,label:'GD41'},{x:6.14,y:0.089,label:'GD46'}]);
+makeChart('chartLec', [{x:0.06,y:0.2471,label:'S17L6'},{x:0.1,y:0.2353,label:'S31L6'},{x:0.13,y:0.2455,label:'S14G6'},{x:0.17,y:0.2362,label:'S31G6'},{x:0.21,y:0.2532,label:'S15S6'},{x:0.24,y:0.2515,label:'S30S6'},{x:0.32,y:0.2414,label:'S30O6'},{x:0.39,y:0.2395,label:'S30N6'},{x:0.02,y:0.2456,label:'T30J6'},{x:0.5,y:0.2462,label:'T15E7'},{x:0.76,y:0.2593,label:'T30A7'},{x:0.83,y:0.2586,label:'T31Y7'},{x:0.91,y:0.2424,label:'T30J7'}]);
+makeChart('chartCer', [{x:0,y:-0.16,label:'TZX26'},{x:0.4,y:0.001,label:'TX26'},{x:0.4,y:-0.003,label:'TZXO6'},{x:0.5,y:0.014,label:'TZXD6'},{x:0.8,y:0.023,label:'TZXM7'},{x:0.8,y:0.021,label:'TZXA7'},{x:0.9,y:0.027,label:'TZXY7'},{x:1,y:0.028,label:'TZX27'},{x:1.2,y:0.05,label:'TZXS7'},{x:1.4,y:0.055,label:'TZXD7'},{x:1.7,y:0.058,label:'TZXM8'},{x:2,y:0.071,label:'TZX28'},{x:2.2,y:0.074,label:'TZXS8'},{x:1.3,y:0.047,label:'TX28'},{x:2.7,y:0.075,label:'TZXM9'},{x:2.8,y:0.079,label:'TX31'},{x:3,y:0.077,label:'DICP'},{x:6.5,y:0.085,label:'PARP'},{x:9.8,y:0.083,label:'CUAP'},{x:0.1,y:-0.062,label:'X31L6'},{x:0.3,y:-0.021,label:'X30S6'},{x:0.4,y:0.012,label:'X30N6'}]);
+makeChart('chartONs', [{x:1.1,y:0.044,label:'Aluar (Wed Oct 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:0.8,y:0.033,label:'Arcor (Wed May 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:4.7,y:0.064,label:'Arcor (jul-33)'},{x:2.1,y:0.05,label:'Banco Galicia (Wed Oct 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:1.2,y:0.081,label:'CGC (Tue Oct 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:2.2,y:0.059,label:'Cresud (Sat Nov 28 2026 05:00:00 GMT-0300 (hora estándar de Argentina))'},{x:0.4,y:0.061,label:'Edenor (Thu Nov 26 2026 05:00:00 GMT-0300 (hora estándar de Argentina))'},{x:1.9,y:0.066,label:'Edenor (Fri Aug 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:2.8,y:0.072,label:'Edenor (Fri Oct 30 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:1.2,y:0.045,label:'IRSA (Tue Oct 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:2.9,y:0.059,label:'IRSA (Thu Oct 29 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:0.3,y:0.052,label:'John Deere (Mon Oct 26 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:0.9,y:0.059,label:'John Deere (Wed May 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:1.4,y:0.063,label:'John Deere (Wed Jan 28 2026 05:00:00 GMT-0300 (hora estándar de Argentina))'},{x:2.1,y:0.063,label:'John Deere (Wed Oct 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:1,y:0.046,label:'Loma Negra (Mon Apr 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:1.4,y:0.034,label:'PAE (Sun Sep 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:2.2,y:0.05,label:'PAE (Sat Nov 28 2026 05:00:00 GMT-0300 (hora estándar de Argentina))'},{x:2.9,y:0.054,label:'PAE (Tue Sep 29 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:4.4,y:0.058,label:'PAE (nov-31)'},{x:4,y:0.059,label:'PAE (abr-32)'},{x:1.9,y:0.049,label:'Pampa E. (Fri Aug 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:2.1,y:0.048,label:'Pampa E. (Wed Oct 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:4.2,y:0.061,label:'Pampa E. (sep-31)'},{x:6.2,y:0.068,label:'Pampa E. (dic-34)'},{x:1.5,y:0.046,label:'Pluspetrol (Wed Jan 28 2026 05:00:00 GMT-0300 (hora estándar de Argentina))'},{x:1.7,y:0.049,label:'Pluspetrol (Tue Apr 28 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:4.4,y:0.058,label:'Pluspetrol (Fri Jan 30 2026 05:00:00 GMT-0300 (hora estándar de Argentina))'},{x:0.8,y:0.051,label:'T. Naranja (Mon Apr 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:1.3,y:0.039,label:'Tecpetrol (Tue Oct 27 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:2.9,y:0.055,label:'Tecpetrol (Thu Oct 29 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:4.4,y:0.06,label:'Tecpetrol (ene-33)'},{x:2.2,y:0.058,label:'Telecom (Sat Nov 28 2026 05:00:00 GMT-0300 (hora estándar de Argentina))'},{x:4,y:0.065,label:'TGS (Fri Jul 31 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:1.4,y:0.04,label:'YPF (Mon Jun 29 2026 04:00:00 GMT-0300 (hora estándar de Argentina))'},{x:4.7,y:0.06,label:'YPF (sep-33)'}]);
+</script>
+</body>
+</html>

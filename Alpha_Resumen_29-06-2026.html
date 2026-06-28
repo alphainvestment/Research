@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Investment · Resumen de Mercados · 29 de junio de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#1a2744;--bg:#141c30;--bg-card:#1a2440;--bg-alt:#111827;--border:#243058;--text:#dce5f5;--text-soft:#9aaac8;--muted:#5c6e8a;--accent:#3a6db5;--white:#ffffff;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13.5px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.header{background:var(--bg-card);border-bottom:1px solid var(--border);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.header-center{text-align:center;}
+.header-title{font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600;color:var(--white);letter-spacing:.5px;}
+.header-date{font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.5px;}
+.header-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);border:1px solid var(--border);padding:5px 13px;border-radius:3px;}
+.wrap{max-width:900px;margin:0 auto;padding:36px 20px 60px;}
+.fx-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:7px;overflow:hidden;margin-bottom:40px;}
+.fx-card{background:var(--bg-card);padding:18px 20px;text-align:center;}
+.fx-label{font-size:10px;text-transform:uppercase;letter-spacing:1.3px;color:var(--text);font-weight:600;margin-bottom:8px;}
+.fx-value{font-size:21px;font-weight:600;color:var(--white);letter-spacing:-.3px;}
+.fx-row{display:flex;gap:14px;margin-top:5px;justify-content:center;}
+.fx-chip{font-size:10.5px;color:var(--text-soft);}
+.fx-chip span{color:var(--muted);}
+.sec{padding:28px 0;}
+.sec-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:7px;overflow:hidden;}
+.sec-inner.alt{background:var(--bg-alt);}
+.sec-bar{padding:12px 22px;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;}
+.sec-bar-title{font-size:15px;font-weight:700;color:var(--white);letter-spacing:.1px;}
+.sec-bar-sub{font-size:10px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);}
+.news-list{padding:2px 0;}
+.news-item{display:flex;gap:16px;padding:15px 22px;border-bottom:1px solid var(--border);}
+.news-item:last-child{border-bottom:none;}
+.news-dash{color:var(--accent);flex-shrink:0;font-size:15px;line-height:1.55;margin-top:1px;}
+.news-body{color:var(--text-soft);font-size:13.5px;line-height:1.72;}
+.news-tag{font-weight:600;color:var(--text);}
+.news-body-text{margin-top:6px;}
+.tbl-wrap{overflow-x:auto;padding:0 22px 20px;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+thead th{text-align:right;padding:10px 10px 9px 8px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;}
+thead th:first-child{text-align:left;padding-left:0;}
+tbody tr{border-bottom:1px solid rgba(34,45,72,.7);}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:rgba(58,109,181,.05);}
+tbody td{padding:7px 10px 7px 8px;text-align:right;color:var(--text-soft);white-space:nowrap;}
+tbody td:first-child{text-align:left;padding-left:0;font-weight:500;color:var(--text);}
+.subhdr{padding:8px 0 4px!important;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--muted);text-align:left!important;}
+.chart-block{border-top:1px solid var(--border);padding:24px 24px 28px;}
+.chart-block-title{font-size:12px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px;}
+.disclaimer{margin-top:36px;padding:16px 20px;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);font-size:11px;color:var(--muted);line-height:1.75;}
+.footer{background:var(--bg-card);border-top:1px solid var(--border);padding:16px 52px;text-align:center;}
+.footer p{color:var(--muted);font-size:10.5px;}
+@media(max-width:768px){
+  .header{padding:14px 16px;height:auto;flex-direction:column;align-items:flex-start;gap:10px;}
+  .header-center{text-align:left;width:100%;}
+  .header-tag{display:none;}
+  .wrap{padding:20px 14px 40px;}
+  .fx-strip{grid-template-columns:1fr 1fr;}
+  table{font-size:11px;}
+  .sec-bar-sub{display:none;}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div><svg width="140" height="44" viewBox="0 0 200 58" xmlns="http://www.w3.org/2000/svg">
+    <text x="0" y="48" font-family="Georgia,serif" font-size="52" fill="#3a6db5" font-style="italic">α</text>
+    <text x="54" y="34" font-family="'Gill Sans','Trebuchet MS',Arial,sans-serif" font-size="22" fill="#dce5f5" letter-spacing="2">ALPHA</text>
+    <text x="58" y="50" font-family="'Gill Sans','Trebuchet MS',Arial,sans-serif" font-size="10.5" fill="#5c6e8a" letter-spacing="3.5">INVESTMENT</text>
+  </svg></div>
+  <div class="header-center">
+    <div class="header-title">Resumen de Mercados</div>
+    <div class="header-date">29 de junio de 2026</div>
+  </div>
+  <div class="header-tag">Informe Semanal</div>
+</header>
+
+<main class="wrap">
+
+  <div class="fx-strip">
+    <div class="fx-card">
+      <div class="fx-label">Dólar A3500</div>
+      <div class="fx-value">$1.477</div>
+      <div class="fx-row"><span class="fx-chip"><span>Var.</span> +1,1%</span></div>
+    </div>
+    <div class="fx-card">
+      <div class="fx-label">MEP Abierto</div>
+      <div class="fx-value">$1.503</div>
+      <div class="fx-row"><span class="fx-chip"><span>Var.</span> +1,6%</span><span class="fx-chip"><span>Brecha</span> 1,8%</span></div>
+    </div>
+    <div class="fx-card">
+      <div class="fx-label">CCL (t+1)</div>
+      <div class="fx-value">$1.542</div>
+      <div class="fx-row"><span class="fx-chip"><span>Var.</span> +2,2%</span><span class="fx-chip"><span>Brecha</span> 4,4%</span></div>
+    </div>
+    <div class="fx-card">
+      <div class="fx-label">Canje MEP/CCL</div>
+      <div class="fx-value">2,60%</div>
+      <div class="fx-row"><span class="fx-chip" style="color:var(--muted);">spread implícito</span></div>
+    </div>
+  </div>
+
+  <div class="sec"><div class="sec-inner">
+    <div class="sec-bar"><span class="sec-bar-title">Novedades de la Semana</span></div>
+    <div class="news-list">
+      <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">PBI</span><div class="news-body-text">El producto interno bruto registró una expansión trimestral del 0,7% y un avance interanual del 2,3% durante el primer período del año. El desempeño económico fue impulsado por el dinamismo de las exportaciones, con fuertes subas en los sectores agropecuario y minero. En contraposición, la inversión fija y la actividad manufacturera sufrieron caídas que actuaron como el principal freno para una mayor aceleración de la actividad.</div></span></div>
+      <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Compras BCRA</span><div class="news-body-text">La entidad monetaria adquirió 50 millones de dólares en la última rueda de operaciones, representando el 8,1% del movimiento total del mercado oficial. De esta forma, el saldo favorable de intervenciones cambiarias se elevó a 11.040 millones de dólares en lo que va del año.</div></span></div>
+      <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">MSCI</span><div class="news-body-text">MSCI no incluyó a la plaza local en su última revisión anual de clasificación de mercados financieros globales. De esta manera, el país queda sin modificaciones en su condición actual y posterga la posibilidad de una reclasificación formal hacia las categorías de frontera o emergente. Esta decisión mantendrá transitoriamente estables las condiciones de acceso para ciertos fondos de inversión internacionales que replican estos índices de referencia.</div></span></div>
+      <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Cuenta Corriente</span><div class="news-body-text">El balance de cuenta corriente del primer trimestre arrojó un saldo negativo de 1.650 millones de dólares, una cifra que muestra una fuerte mejora interanual frente al bache del mismo lapso de 2025. El superávit comercial de bienes fue absorbido por el déficit de servicios y los giros de rentas, lo que elevó la deuda externa bruta total a 321.800 millones de dólares. No obstante, el bache financiero fue cubierto por ingresos de capital, destacándose un fuerte incremento de la inversión extranjera en títulos públicos en moneda local hasta máximos de 2022.</div></span></div>
+      <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Índice de Confianza</span><div class="news-body-text">El Índice de Confianza en el Gobierno (ICG), medido por la Universidad Torcuato Di Tella, registró un incremento mensual del 3,9% en junio, marcando el primer avance positivo de este año. La medición se ubicó en los 2,07 puntos, manteniendo una contracción en la comparación interanual y respecto a los máximos alcanzados a finales de 2024. A nivel regional, la mejora fue traccionada de forma principal por la recuperación de las expectativas en el Gran Buenos Aires.</div></span></div>
+      <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Super RIGI</span><div class="news-body-text">La Cámara de Diputados otorgó media sanción al nuevo régimen fiscal diseñado para atraer inversiones superiores a los 1.000 millones de dólares en sectores tecnológicos y de energías limpias. El proyecto de ley reduce el impuesto a las ganancias al 15%, elimina los aranceles de importación y retenciones desde el inicio de las operaciones, y asegura estabilidad regulatoria por tres décadas. A diferencia del marco normativo previo, esta iniciativa no impone obligaciones de contratación o insumos de origen nacional y pasa ahora al Senado para su tratamiento definitivo.</div></span></div>
+    </div>
+  </div></div>
+
+  <div class="sec"><div class="sec-inner alt">
+    <div class="sec-bar"><span class="sec-bar-title">Bopreales</span><span class="sec-bar-sub">BCRA · Hard Dollar</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Especie</th><th>Paridad</th><th>YTM</th><th>MD</th><th>Vencimiento</th></tr></thead>
+      <tbody>
+        <tr><td>BPOA7</td><td>100,1%</td><td>4,9%</td><td>1,04</td><td>31-oct-27</td></tr>
+        <tr><td>BPOB7</td><td>98,3%</td><td>6,8%</td><td>1,03</td><td>31-oct-27</td></tr>
+        <tr><td>BPOC7</td><td>98,9%</td><td>6,1%</td><td>1,03</td><td>31-oct-27</td></tr>
+        <tr><td>BPOD7</td><td>98,8%</td><td>6,3%</td><td>1,03</td><td>31-oct-27</td></tr>
+        <tr><td>BPOA8</td><td>89,1%</td><td>8,4%</td><td>2,17</td><td>30-oct-28</td></tr>
+        <tr><td>BPOB8</td><td>89,6%</td><td>8,1%</td><td>2,17</td><td>30-oct-28</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="sec"><div class="sec-inner">
+    <div class="sec-bar"><span class="sec-bar-title">Globales &amp; Bonares</span><span class="sec-bar-sub">Soberanos · Hard Dollar</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Especie</th><th>Paridad</th><th>YTM</th><th>MD</th><th>Vencimiento</th><th>Ley</th></tr></thead>
+      <tbody>
+        <tr><td>AO27</td><td>99,3%</td><td>6,7%</td><td>1,24</td><td>31-oct-27</td><td>ARG</td></tr>
+        <tr><td>AO28</td><td>94,7%</td><td>8,8%</td><td>2,08</td><td>31-oct-28</td><td>ARG</td></tr>
+        <tr><td>AN29</td><td>92,1%</td><td>9,4%</td><td>2,95</td><td>30-nov-29</td><td>ARG</td></tr>
+        <tr><td>AL29</td><td>89,6%</td><td>8,8%</td><td>1,37</td><td>9-jul-29</td><td>ARG</td></tr>
+        <tr><td>GD29</td><td>91,4%</td><td>7,4%</td><td>1,40</td><td>9-jul-29</td><td>NY</td></tr>
+        <tr><td>AL30</td><td>86,3%</td><td>9,3%</td><td>1,79</td><td>9-jul-30</td><td>ARG</td></tr>
+        <tr><td>GD30</td><td>88,8%</td><td>7,7%</td><td>1,83</td><td>9-jul-30</td><td>NY</td></tr>
+        <tr><td>AL35</td><td>77,6%</td><td>9,6%</td><td>5,26</td><td>9-jul-35</td><td>ARG</td></tr>
+        <tr><td>GD35</td><td>80,4%</td><td>9,0%</td><td>5,31</td><td>9-jul-35</td><td>NY</td></tr>
+        <tr><td>AE38</td><td>79,5%</td><td>9,9%</td><td>4,48</td><td>9-ene-38</td><td>ARG</td></tr>
+        <tr><td>GD38</td><td>83,4%</td><td>8,9%</td><td>4,60</td><td>9-ene-38</td><td>NY</td></tr>
+        <tr><td>AL41</td><td>72,8%</td><td>9,5%</td><td>5,77</td><td>9-jul-41</td><td>ARG</td></tr>
+        <tr><td>GD41</td><td>74,6%</td><td>9,1%</td><td>5,84</td><td>9-jul-41</td><td>NY</td></tr>
+        <tr><td>GD46</td><td>76,5%</td><td>8,9%</td><td>6,12</td><td>9-jul-46</td><td>NY</td></tr>
+      </tbody>
+    </table></div>
+    <div class="chart-block">
+      <div class="chart-block-title">Curva Soberanos · YTM vs MD</div>
+      <div class="chart-canvas-wrap" style="height:320px;"><canvas id="chartSob"></canvas></div>
+    </div>
+  </div></div>
+
+  <div class="sec"><div class="sec-inner alt">
+    <div class="sec-bar"><span class="sec-bar-title">Lecaps &amp; Boncaps</span><span class="sec-bar-sub">Tasa Fija · ARS</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Ticker</th><th>YTM Nom.</th><th>YTM</th><th>TEM</th><th>MD</th><th>Vencimiento</th></tr></thead>
+      <tbody>
+        <tr><td colspan="6" class="subhdr">Letras Capitalizables</td></tr>
+        <tr><td>S17L6</td><td>22,30%</td><td>25,21%</td><td>1,89%</td><td>0,04</td><td>17-jul-26</td></tr>
+        <tr><td>S31L6</td><td>22,40%</td><td>25,21%</td><td>1,89%</td><td>0,08</td><td>31-jul-26</td></tr>
+        <tr><td>S14G6</td><td>23,55%</td><td>25,89%</td><td>1,94%</td><td>0,11</td><td>14-ago-26</td></tr>
+        <tr><td>S31G6</td><td>22,12%</td><td>24,19%</td><td>1,82%</td><td>0,15</td><td>31-ago-26</td></tr>
+        <tr><td>S15S6</td><td>23,71%</td><td>25,68%</td><td>1,92%</td><td>0,19</td><td>15-sep-26</td></tr>
+        <tr><td>S30S6</td><td>24,81%</td><td>26,96%</td><td>2,01%</td><td>0,22</td><td>30-sep-26</td></tr>
+        <tr><td>S30O6</td><td>24,31%</td><td>26,25%</td><td>1,96%</td><td>0,30</td><td>30-oct-26</td></tr>
+        <tr><td>S30N6</td><td>23,77%</td><td>25,27%</td><td>1,90%</td><td>0,37</td><td>30-nov-26</td></tr>
+        <tr><td colspan="6" class="subhdr">Bonos Capitalizables</td></tr>
+        <tr><td>T30J6</td><td>23,80%</td><td>27,28%</td><td>2,03%</td><td>0,00</td><td>30-jun-26</td></tr>
+        <tr><td>T15E7</td><td>25,30%</td><td>26,55%</td><td>1,98%</td><td>0,48</td><td>15-ene-27</td></tr>
+        <tr><td>T30A7</td><td>26,16%</td><td>26,71%</td><td>1,99%</td><td>0,74</td><td>30-abr-27</td></tr>
+        <tr><td>T31Y7</td><td>25,40%</td><td>25,68%</td><td>1,92%</td><td>0,82</td><td>31-may-27</td></tr>
+        <tr><td>T30J7</td><td>27,30%</td><td>27,29%</td><td>2,03%</td><td>0,88</td><td>30-jun-27</td></tr>
+      </tbody>
+    </table></div>
+    <div class="chart-block">
+      <div class="chart-block-title">Curva Letras del Tesoro · YTM vs MD</div>
+      <div class="chart-canvas-wrap" style="height:320px;"><canvas id="chartLec"></canvas></div>
+    </div>
+  </div></div>
+
+  <div class="sec"><div class="sec-inner">
+    <div class="sec-bar"><span class="sec-bar-title">Boncer</span><span class="sec-bar-sub">Ajuste CER</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Ticker</th><th>Paridad</th><th>YTM real</th><th>MD</th><th>Vencimiento</th></tr></thead>
+      <tbody>
+        <tr><td>TZX26</td><td>100,2%</td><td>-57,5%</td><td>0,00</td><td>30-jun-26</td></tr>
+        <tr><td>X31L6</td><td>100,4%</td><td>-4,2%</td><td>0,10</td><td>31-jul-26</td></tr>
+        <tr><td>X30S6</td><td>100,2%</td><td>-0,7%</td><td>0,30</td><td>30-sep-26</td></tr>
+        <tr><td>TZXO6</td><td>99,7%</td><td>1,0%</td><td>0,30</td><td>30-oct-26</td></tr>
+        <tr><td>TX26</td><td>20,0%</td><td>1,6%</td><td>0,40</td><td>9-nov-26</td></tr>
+        <tr><td>X30N6</td><td>99,1%</td><td>2,1%</td><td>0,40</td><td>30-nov-26</td></tr>
+        <tr><td>TZXD6</td><td>98,8%</td><td>2,7%</td><td>0,50</td><td>15-dic-26</td></tr>
+        <tr><td>TZXM7</td><td>97,3%</td><td>3,7%</td><td>0,70</td><td>31-mar-27</td></tr>
+        <tr><td>TZXA7</td><td>96,4%</td><td>4,5%</td><td>0,80</td><td>30-abr-27</td></tr>
+        <tr><td>TZXY7</td><td>96,8%</td><td>3,6%</td><td>0,90</td><td>30-may-27</td></tr>
+        <tr><td>TZX27</td><td>95,3%</td><td>4,9%</td><td>1,00</td><td>30-jun-27</td></tr>
+        <tr><td>TZXS7</td><td>93,1%</td><td>5,9%</td><td>1,20</td><td>30-sep-27</td></tr>
+        <tr><td>TZXD7</td><td>91,6%</td><td>6,1%</td><td>1,40</td><td>15-dic-27</td></tr>
+        <tr><td>TZXM8</td><td>90,5%</td><td>5,8%</td><td>1,70</td><td>31-mar-28</td></tr>
+        <tr><td>TZX28</td><td>85,8%</td><td>7,9%</td><td>1,90</td><td>30-jun-28</td></tr>
+        <tr><td>TZXS8</td><td>84,2%</td><td>7,9%</td><td>2,20</td><td>29-sep-28</td></tr>
+        <tr><td>TX28</td><td>47,4%</td><td>6,4%</td><td>1,30</td><td>9-nov-28</td></tr>
+        <tr><td>TZXM9</td><td>81,9%</td><td>7,5%</td><td>2,60</td><td>28-mar-29</td></tr>
+        <tr><td>TX31</td><td>84,0%</td><td>8,7%</td><td>2,80</td><td>30-nov-31</td></tr>
+        <tr><td>DICP</td><td>92,0%</td><td>8,7%</td><td>2,90</td><td>31-dic-33</td></tr>
+        <tr><td>PARP</td><td>65,1%</td><td>8,6%</td><td>6,50</td><td>31-dic-38</td></tr>
+        <tr><td>CUAP</td><td>59,3%</td><td>8,3%</td><td>9,70</td><td>31-dic-45</td></tr>
+      </tbody>
+    </table></div>
+    <div class="chart-block">
+      <div class="chart-block-title">Curva Boncer · YTM real vs MD (hasta MD=3)</div>
+      <div class="chart-canvas-wrap" style="height:320px;"><canvas id="chartCer"></canvas></div>
+    </div>
+  </div></div>
+
+  <div class="sec"><div class="sec-inner alt">
+    <div class="sec-bar"><span class="sec-bar-title">Obligaciones Negociables</span><span class="sec-bar-sub">Hard Dollar</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Emisor</th><th>Ticker</th><th>Precio</th><th>Paridad</th><th>YTM</th><th>DM</th><th>Vto.</th><th>Industria</th></tr></thead>
+      <tbody>
+        <tr><td>Edenor</td><td>DNC3D</td><td>102,6</td><td>102%</td><td>5,8%</td><td>0,4</td><td>22-nov-26</td><td>Electricidad</td></tr>
+        <tr><td>John Deere</td><td>HJCFD</td><td>101,0</td><td>100%</td><td>4,8%</td><td>0,3</td><td>21-oct-26</td><td>Finanzas</td></tr>
+        <tr><td>Arcor</td><td>RCCRD</td><td>104,0</td><td>103%</td><td>3,2%</td><td>0,8</td><td>9-may-27</td><td>Alimentos</td></tr>
+        <tr><td>Loma Negra</td><td>LOC5D</td><td>107,2</td><td>104%</td><td>4,4%</td><td>1,0</td><td>20-abr-27</td><td>Construcción</td></tr>
+        <tr><td>T. Naranja</td><td>T641D</td><td>103,8</td><td>102%</td><td>4,9%</td><td>0,8</td><td>30-abr-27</td><td>Finanzas</td></tr>
+        <tr><td>CGC</td><td>CP36D</td><td>99,8</td><td>98%</td><td>8,0%</td><td>1,2</td><td>10-oct-27</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>IRSA</td><td>IRCND</td><td>104,2</td><td>102%</td><td>4,5%</td><td>1,2</td><td>23-oct-27</td><td>Real Estate</td></tr>
+        <tr><td>Tecpetrol</td><td>TTC8D</td><td>102,5</td><td>102%</td><td>3,8%</td><td>1,3</td><td>24-oct-27</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>John Deere</td><td>HJCID</td><td>102,3</td><td>102%</td><td>5,8%</td><td>0,9</td><td>27-may-27</td><td>Finanzas</td></tr>
+        <tr><td>Aluar</td><td>LMS7D</td><td>88,4</td><td>116%</td><td>4,0%</td><td>1,1</td><td>12-oct-28</td><td>Mat. Básicos</td></tr>
+        <tr><td>Edenor</td><td>DNC5D</td><td>109,5</td><td>105%</td><td>6,6%</td><td>1,8</td><td>5-ago-28</td><td>Electricidad</td></tr>
+        <tr><td>John Deere</td><td>HJCHD</td><td>104,3</td><td>101%</td><td>6,3%</td><td>1,4</td><td>17-ene-28</td><td>Finanzas</td></tr>
+        <tr><td>Pluspetrol</td><td>PLC1D</td><td>103,0</td><td>102%</td><td>4,8%</td><td>1,5</td><td>27-ene-28</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>PAE</td><td>PN34D</td><td>102,6</td><td>102%</td><td>3,4%</td><td>1,4</td><td>27-sep-27</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCQD</td><td>108,0</td><td>105%</td><td>4,7%</td><td>1,9</td><td>6-ago-28</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>PAE</td><td>PN37D</td><td>103,7</td><td>103%</td><td>5,0%</td><td>2,2</td><td>13-nov-28</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Banco Galicia</td><td>BYCHD</td><td>108,0</td><td>106%</td><td>4,8%</td><td>2,1</td><td>10-oct-28</td><td>Finanzas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCND</td><td>103,4</td><td>102%</td><td>4,9%</td><td>2,1</td><td>4-oct-28</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>John Deere</td><td>HJCGD</td><td>100,5</td><td>99%</td><td>6,9%</td><td>2,1</td><td>21-oct-28</td><td>Finanzas</td></tr>
+        <tr><td>Cresud</td><td>CS47D</td><td>103,3</td><td>102%</td><td>6,0%</td><td>2,2</td><td>15-nov-28</td><td>Agro</td></tr>
+        <tr><td>Telecom</td><td>TLCOD</td><td>103,9</td><td>103%</td><td>5,6%</td><td>2,2</td><td>28-nov-28</td><td>Telecom</td></tr>
+        <tr><td>Pluspetrol</td><td>PLC3D</td><td>107,0</td><td>104%</td><td>5,0%</td><td>1,7</td><td>30-abr-28</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>IRSA</td><td>IRCOD</td><td>108,9</td><td>106%</td><td>5,4%</td><td>2,9</td><td>23-oct-29</td><td>Real Estate</td></tr>
+        <tr><td>PAE</td><td>PN35D</td><td>107,0</td><td>105%</td><td>5,3%</td><td>2,8</td><td>27-sep-29</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Tecpetrol</td><td>TTC9D</td><td>104,6</td><td>103%</td><td>5,7%</td><td>2,9</td><td>24-oct-29</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pluspetrol</td><td>PLC2D</td><td>106,6</td><td>106%</td><td>5,9%</td><td>4,4</td><td>27-ene-30</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Edenor</td><td>DNC7D</td><td>109,2</td><td>107%</td><td>7,3%</td><td>2,8</td><td>24-oct-30</td><td>Electricidad</td></tr>
+        <tr><td>PAE</td><td>PN36D</td><td>107,2</td><td>106%</td><td>5,9%</td><td>4,4</td><td>13-nov-31</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>TGS</td><td>TSC3D</td><td>113,1</td><td>109%</td><td>6,7%</td><td>4,0</td><td>24-jul-31</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCMD</td><td>110,5</td><td>108%</td><td>6,2%</td><td>4,2</td><td>10-sep-31</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Arcor</td><td>RC1CD</td><td>110,3</td><td>107%</td><td>6,3%</td><td>4,7</td><td>31-jul-33</td><td>Alimentos</td></tr>
+        <tr><td>PAE</td><td>PNXCD</td><td>112,3</td><td>111%</td><td>5,9%</td><td>3,9</td><td>30-abr-32</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Tecpetrol</td><td>TTCAD</td><td>112,7</td><td>109%</td><td>5,7%</td><td>4,4</td><td>22-ene-33</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>YPF</td><td>YMCID</td><td>111,5</td><td>107%</td><td>4,1%</td><td>1,4</td><td>30-jun-29</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>YPF</td><td>YMCJD</td><td>106,6</td><td>105%</td><td>6,1%</td><td>4,6</td><td>30-sep-33</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCOD</td><td>107,9</td><td>108%</td><td>6,8%</td><td>6,2</td><td>16-dic-34</td><td>Oil &amp; Gas</td></tr>
+      </tbody>
+    </table></div>
+    <div class="chart-block">
+      <div class="chart-block-title">Curva ONs · YTM vs DM</div>
+      <div class="chart-canvas-wrap" style="height:500px;"><canvas id="chartONs"></canvas></div>
+    </div>
+  </div></div>
+
+  <div class="disclaimer">
+    Este reporte fue elaborado con propósito puramente informativo. Las opiniones vertidas sobre predicciones de mercado de cualquier tipo no deben asumirse como invitaciones ni sugerencias de comprar o vender activo alguno. La información ha sido compilada de fuentes consideradas confiables y si bien se han tomado recaudos razonables, no podemos garantizar plena exactitud o exhaustividad de la información ni de los resultados analíticos. Todas las opiniones y estimaciones constituyen nuestro juicio al momento de publicación y están sujetas a cambio sin previo aviso.
+  </div>
+</main>
+
+<footer class="footer">
+  <p>Alpha Investment · www.alphainvestment.com.ar · 29 de junio de 2026</p>
+</footer>
+
+<script>
+Chart.register(ChartDataLabels);
+Chart.defaults.font.family = "'Inter',system-ui,sans-serif";
+Chart.defaults.font.size = 10;
+Chart.defaults.color = '#9aaac8';
+const GRID = 'rgba(58,109,181,0.10)';
+const DOT  = '#6fa3e8';
+
+function makeChart(id, pts, yMin, xMax) {
+  const ctx = document.getElementById(id);
+  if (!ctx) return;
+  new Chart(ctx, {
+    type: 'scatter',
+    data: { datasets: [{ data: pts, backgroundColor: DOT, pointRadius: 5, pointHoverRadius: 7 }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      layout: { padding: { top: 26, right: 30, bottom: 4, left: 4 } },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#192035', borderColor: '#222d48', borderWidth: 1,
+          titleColor: '#dce5f5', bodyColor: '#9aaac8',
+          callbacks: { label: c => `${c.raw.label}: ${c.raw.y.toFixed(1)}%` }
+        },
+        datalabels: {
+          color: '#c0d0ec', font: { size: 9.5 },
+          formatter: v => v.label, anchor: 'end', align: 'top', offset: 3, clip: false
+        }
+      },
+      scales: {
+        x: { grid:{color:GRID,lineWidth:0.5}, ticks:{color:'#5c6e8a',font:{size:10}},
+             ...(xMax !== undefined ? {max:xMax} : {}) },
+        y: { grid:{color:GRID,lineWidth:0.5}, ticks:{color:'#5c6e8a',font:{size:10}, callback: v => v.toFixed(1)+'%'},
+             ...(yMin !== undefined ? {min:yMin} : {}) }
+      }
+    }
+  });
+}
+
+makeChart('chartSob', [
+  {x:1.24,y:6.7,label:'AO27'},{x:2.08,y:8.8,label:'AO28'},{x:2.95,y:9.4,label:'AN29'},
+  {x:1.37,y:8.8,label:'AL29'},{x:1.40,y:7.4,label:'GD29'},{x:1.79,y:9.3,label:'AL30'},
+  {x:1.83,y:7.7,label:'GD30'},{x:5.26,y:9.6,label:'AL35'},{x:5.31,y:9.0,label:'GD35'},
+  {x:4.48,y:9.9,label:'AE38'},{x:4.60,y:8.9,label:'GD38'},{x:5.77,y:9.5,label:'AL41'},
+  {x:5.84,y:9.1,label:'GD41'},{x:6.12,y:8.9,label:'GD46'}
+]);
+
+makeChart('chartLec', [
+  {x:0.04,y:25.21,label:'S17L6'},{x:0.08,y:25.21,label:'S31L6'},{x:0.11,y:25.89,label:'S14G6'},
+  {x:0.15,y:24.19,label:'S31G6'},{x:0.19,y:25.68,label:'S15S6'},{x:0.22,y:26.96,label:'S30S6'},
+  {x:0.30,y:26.25,label:'S30O6'},{x:0.37,y:25.27,label:'S30N6'},
+  {x:0.00,y:27.28,label:'T30J6'},{x:0.48,y:26.55,label:'T15E7'},{x:0.74,y:26.71,label:'T30A7'},
+  {x:0.82,y:25.68,label:'T31Y7'},{x:0.88,y:27.29,label:'T30J7'}
+]);
+
+makeChart('chartCer', [
+  {x:0.1,y:-4.2,label:'X31L6'},{x:0.3,y:-0.7,label:'X30S6'},
+  {x:0.3,y:1.0,label:'TZXO6'},{x:0.4,y:1.6,label:'TX26'},{x:0.4,y:2.1,label:'X30N6'},
+  {x:0.5,y:2.7,label:'TZXD6'},{x:0.7,y:3.7,label:'TZXM7'},{x:0.8,y:4.5,label:'TZXA7'},
+  {x:0.9,y:3.6,label:'TZXY7'},{x:1.0,y:4.9,label:'TZX27'},{x:1.2,y:5.9,label:'TZXS7'},
+  {x:1.3,y:6.4,label:'TX28'},{x:1.4,y:6.1,label:'TZXD7'},{x:1.7,y:5.8,label:'TZXM8'},
+  {x:1.9,y:7.9,label:'TZX28'},{x:2.2,y:7.9,label:'TZXS8'},{x:2.6,y:7.5,label:'TZXM9'},
+  {x:2.8,y:8.7,label:'TX31'},{x:2.9,y:8.7,label:'DICP'}
+], undefined, 3);
+
+makeChart('chartONs', [
+  {x:0.4,y:5.8,label:"Edenor '26"},{x:0.3,y:4.8,label:"JD '26"},
+  {x:0.8,y:3.2,label:"Arcor '27"},{x:1.0,y:4.4,label:"Loma '27"},
+  {x:0.8,y:4.9,label:"T.Naranja '27"},{x:1.2,y:8.0,label:"CGC '27"},
+  {x:1.2,y:4.5,label:"IRSA '27"},{x:1.3,y:3.8,label:"Tecp '27"},
+  {x:0.9,y:5.8,label:"JD '27a"},{x:1.1,y:4.0,label:"Aluar '28"},
+  {x:1.8,y:6.6,label:"Edenor '28"},{x:1.4,y:6.3,label:"JD '28a"},
+  {x:1.5,y:4.8,label:"Plus '28a"},{x:1.4,y:3.4,label:"PAE '27"},
+  {x:1.9,y:4.7,label:"Pampa '28a"},{x:2.2,y:5.0,label:"PAE '28a"},
+  {x:2.1,y:4.8,label:"Galicia '28"},{x:2.1,y:4.9,label:"Pampa '28b"},
+  {x:2.1,y:6.9,label:"JD '28b"},{x:2.2,y:6.0,label:"Cresud '28"},
+  {x:2.2,y:5.6,label:"Telecom '28"},{x:1.7,y:5.0,label:"Plus '28b"},
+  {x:2.9,y:5.4,label:"IRSA '29"},{x:2.8,y:5.3,label:"PAE '29a"},
+  {x:2.9,y:5.7,label:"Tecp '29"},{x:4.4,y:5.9,label:"Plus '30"},
+  {x:2.8,y:7.3,label:"Edenor '30"},{x:4.4,y:5.9,label:"PAE '31a"},
+  {x:4.0,y:6.7,label:"TGS '31"},{x:4.2,y:6.2,label:"Pampa '31"},
+  {x:4.7,y:6.3,label:"Arcor '33"},{x:3.9,y:5.9,label:"PAE '32"},
+  {x:4.4,y:5.7,label:"Tecp '33"},{x:4.6,y:6.1,label:"YPF '33"}
+], 0, 5);
+</script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Investment · Resumen de Mercados · 6 de julio de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#001533;
+  --deep:#002C65;
+  --bg:#001533;
+  --bg-card:rgba(255,255,255,.06);
+  --bg-alt:rgba(255,255,255,.03);
+  --border:rgba(255,255,255,.09);
+  --text:rgba(255,255,255,.88);
+  --text-soft:rgba(255,255,255,.60);
+  --muted:rgba(255,255,255,.40);
+  --accent:#0062DE;
+  --accent-soft:#D5EAFC;
+  --positive:#22C55E;
+  --negative:#F43F5E;
+  --white:#ffffff;
+  --rc:16px;
+  --rs:10px;
+}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13.5px;line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;min-height:100vh;}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -8%, rgba(0,98,222,0.24) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 100% 100%, rgba(0,44,101,0.40) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 20% at 0% 60%, rgba(0,98,222,0.08) 0%, transparent 60%);
+}
+.header,.ticker-box,main.wrap,.footer,.legal-final{position:relative;z-index:1;}
+.header{background:var(--bg-card);border-bottom:1px solid var(--border);}
+.header-inner{max-width:1180px;margin:0 auto;padding:0 24px;height:70px;display:flex;align-items:center;justify-content:space-between;}
+.header-brand{display:flex;align-items:center;gap:12px;}
+.header-logo{height:30px;width:auto;display:block;}
+.header-badge{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent-soft);border:1px solid var(--accent);border-radius:999px;padding:4px 11px;}
+.header-badge::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:6px;}
+.header-center{text-align:center;}
+.header-title{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:22px;font-weight:800;color:var(--white);letter-spacing:-.4px;}
+.header-date{font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.5px;}
+.header-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1.4px;color:var(--accent-soft);border:1px solid var(--border);padding:5px 13px;border-radius:3px;}
+.ticker-wrap{max-width:1180px;margin:16px auto 0;padding:0 24px;}
+.ticker-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rc);overflow:hidden;position:relative;}
+.ticker-track{display:inline-flex;white-space:nowrap;padding:13px 0;animation-name:ticker-scroll;animation-timing-function:linear;animation-iteration-count:infinite;}
+.ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+.ticker-item{display:inline-flex;align-items:center;gap:8px;padding:0 22px;border-right:1px solid var(--border);font-size:11.5px;white-space:nowrap;}
+.ticker-item b{color:var(--white);font-weight:600;letter-spacing:.2px;}
+.ticker-item .ticker-price{color:var(--text-soft);}
+.ticker-item .up{color:var(--positive);}
+.ticker-item .down{color:var(--negative);}
+@keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 24px 60px;}
+.mkt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:14px 18px 18px;}
+.mkt-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 13px;}
+.mkt-card-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent-soft);margin-bottom:7px;}
+.mkt-row{display:flex;justify-content:space-between;align-items:center;padding:3.5px 0;font-size:12px;border-bottom:1px solid rgba(28,47,82,.5);}
+.mkt-row:last-child{border-bottom:none;}
+.mkt-label{color:var(--text);font-weight:500;}
+.mkt-value{display:flex;gap:8px;align-items:center;color:var(--text-soft);font-weight:600;}
+.mkt-delta{font-weight:600;}
+.mkt-delta.up{color:var(--positive);}
+.mkt-delta.down{color:var(--negative);}
+.mkt-card-note{margin-top:8px;font-size:10px;color:var(--muted);line-height:1.4;}
+.sec{padding:0;}
+.sec + .sec{margin-top:24px;}
+.sec-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rc);overflow:hidden;}
+.sec-inner.alt{background:var(--bg-alt);}
+.sec-bar{padding:12px 22px;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;}
+.sec-bar-title{font-size:15px;font-weight:700;color:var(--white);letter-spacing:.1px;}
+.sec-bar-sub{font-size:10px;text-transform:uppercase;letter-spacing:1.3px;color:var(--accent-soft);}
+.news-list{padding:2px 0;}
+.news-item{display:flex;gap:16px;padding:15px 22px;border-bottom:1px solid var(--border);}
+.news-item:last-child{border-bottom:none;}
+.news-dash{color:var(--accent);flex-shrink:0;font-size:15px;line-height:1.55;margin-top:1px;}
+.news-body{color:var(--text-soft);font-size:13.5px;line-height:1.72;}
+.news-tag{font-weight:600;color:var(--accent-soft);}
+.news-body-text{margin-top:6px;color:var(--text);}
+.tbl-wrap{overflow-x:auto;padding:0 22px 20px;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+thead th{text-align:right;padding:10px 10px 9px 8px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;}
+thead th:first-child{text-align:left;padding-left:0;}
+tbody tr{border-bottom:1px solid rgba(28,47,82,.7);}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:rgba(0,98,222,.08);}
+tbody td{padding:7px 10px 7px 8px;text-align:right;color:var(--text-soft);white-space:nowrap;}
+tbody td:first-child{text-align:left;padding-left:0;font-weight:500;color:var(--text);}
+.subhdr{padding:8px 0 4px!important;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--accent-soft);text-align:left!important;}
+.chart-block{border-top:1px solid var(--border);padding:24px 24px 28px;}
+.chart-block-title{font-size:12px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px;}
+.disclaimer{margin-top:24px;padding:16px 20px;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);font-size:11px;color:var(--muted);line-height:1.75;}
+.footer{background:var(--bg-card);border-top:1px solid var(--border);padding:16px 52px;text-align:center;}
+.footer p{color:var(--muted);font-size:10.5px;}
+.legal-final{text-align:center;padding:14px 20px;color:var(--muted);font-size:10px;line-height:1.6;}
+@media(max-width:768px){
+  .header-inner{padding:14px 16px;height:auto;flex-direction:column;align-items:flex-start;gap:10px;}
+  .header-center{text-align:left;width:100%;}
+  .header-tag{display:none;}
+  .wrap{padding:20px 14px 40px;}
+  .sec + .sec{margin-top:20px;}
+  .disclaimer{margin-top:20px;}
+  .ticker-wrap{padding:0 14px;margin-top:10px;}
+  .mkt-grid{grid-template-columns:1fr 1fr;}
+  table{font-size:11px;}
+  .sec-bar-sub{display:none;}
+  .ticker-item{font-size:10.5px;padding:0 16px;}
+}</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="header-brand"><img class="header-logo" src="data:image/png;base64,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" alt="Alpha Investment"><span class="header-badge">Research</span></div>
+    <div class="header-center"><div class="header-title">Resumen de Mercados</div><div class="header-date">6 de julio de 2026</div></div>
+    <div class="header-tag">Informe Semanal</div>
+  </div>
+</header>
+<div class="ticker-wrap"><div class="ticker-box"><div class="ticker-track" style="animation-duration:70s"><span class="ticker-item"><b>GGAL</b><span class="ticker-price">US$50,4</span><span class="up">+0,03%</span></span><span class="ticker-item"><b>BMA</b><span class="ticker-price">US$90,2</span><span class="up">+0,01%</span></span><span class="ticker-item"><b>SUPV</b><span class="ticker-price">US$9,6</span><span class="up">+0,03%</span></span><span class="ticker-item"><b>YPF</b><span class="ticker-price">US$44,4</span><span class="down">-0,01%</span></span><span class="ticker-item"><b>PAMP</b><span class="ticker-price">US$80,6</span><span class="up">+0,01%</span></span><span class="ticker-item"><b>TGS</b><span class="ticker-price">US$28,4</span><span class="down">-0,01%</span></span><span class="ticker-item"><b>LOMA</b><span class="ticker-price">US$11,8</span><span class="up">+0,04%</span></span><span class="ticker-item"><b>MELI</b><span class="ticker-price">US$1763,4</span><span class="up">+0,01%</span></span><span class="ticker-item"><b>CEPU</b><span class="ticker-price">US$14,7</span><span class="up">+0,01%</span></span><span class="ticker-item"><b>EDN</b><span class="ticker-price">US$24,3</span><span class="down">-0,01%</span></span><span class="ticker-item"><b>GGAL</b><span class="ticker-price">US$50,4</span><span class="up">+0,03%</span></span><span class="ticker-item"><b>BMA</b><span class="ticker-price">US$90,2</span><span class="up">+0,01%</span></span><span class="ticker-item"><b>SUPV</b><span class="ticker-price">US$9,6</span><span class="up">+0,03%</span></span><span class="ticker-item"><b>YPF</b><span class="ticker-price">US$44,4</span><span class="down">-0,01%</span></span><span class="ticker-item"><b>PAMP</b><span class="ticker-price">US$80,6</span><span class="up">+0,01%</span></span><span class="ticker-item"><b>TGS</b><span class="ticker-price">US$28,4</span><span class="down">-0,01%</span></span><span class="ticker-item"><b>LOMA</b><span class="ticker-price">US$11,8</span><span class="up">+0,04%</span></span><span class="ticker-item"><b>MELI</b><span class="ticker-price">US$1763,4</span><span class="up">+0,01%</span></span><span class="ticker-item"><b>CEPU</b><span class="ticker-price">US$14,7</span><span class="up">+0,01%</span></span><span class="ticker-item"><b>EDN</b><span class="ticker-price">US$24,3</span><span class="down">-0,01%</span></span></div></div></div>
+<main class="wrap">
+  <div class="sec"><div class="sec-inner">
+    <div class="sec-bar"><span class="sec-bar-title">Panorama de Mercados</span></div>
+    <div class="mkt-grid">
+      <div class="mkt-card"><div class="mkt-card-title">— Futuros</div><div class="mkt-row"><span class="mkt-label">Nasdaq</span><span class="mkt-value">US$7485,2<span class="mkt-delta down">-0,00%</span></span></div><div class="mkt-row"><span class="mkt-label">S&amp;P 500</span><span class="mkt-value">US$29325,1<span class="mkt-delta down">-0,02%</span></span></div><div class="mkt-row"><span class="mkt-label">WTI</span><span class="mkt-value">US$68,9<span class="mkt-delta up">+0,01%</span></span></div><div class="mkt-row"><span class="mkt-label">Oro</span><span class="mkt-value">US$4173,6<span class="mkt-delta up">+0,02%</span></span></div><div class="mkt-row"><span class="mkt-label">Plata</span><span class="mkt-value">US$62,4<span class="mkt-delta up">+0,03%</span></span></div><div class="mkt-row"><span class="mkt-label">Soja</span><span class="mkt-value">US$417,7<span class="mkt-delta down">-0,00%</span></span></div></div>
+      <div class="mkt-card"><div class="mkt-card-title">— Tasas USA</div><div class="mkt-row"><span class="mkt-label">2yr</span><span class="mkt-value">4,14%</span></div><div class="mkt-row"><span class="mkt-label">5yr</span><span class="mkt-value">4,23%</span></div><div class="mkt-row"><span class="mkt-label">10yr</span><span class="mkt-value">4,49%</span></div><div class="mkt-row"><span class="mkt-label">30yr</span><span class="mkt-value">4,98%</span></div></div>
+      <div class="mkt-card"><div class="mkt-card-title">— FX</div><div class="mkt-row"><span class="mkt-label">Dólar A3500</span><span class="mkt-value">$1488,5<span class="mkt-delta up">+0,77%</span></span></div><div class="mkt-row"><span class="mkt-label">MEP Abierto</span><span class="mkt-value">$1526<span class="mkt-delta up">+1,53%</span></span></div><div class="mkt-row"><span class="mkt-label">CCL (t+1)</span><span class="mkt-value">$1569<span class="mkt-delta up">+1,75%</span></span></div><div class="mkt-row"><span class="mkt-label">Canje MEP/CCL</span><span class="mkt-value">2,80%<span class="mkt-delta up">+0,2%</span></span></div></div>
+      <div class="mkt-card"><div class="mkt-card-title">— Tasas ARGY</div><div class="mkt-row"><span class="mkt-label">Badlar</span><span class="mkt-value">21,31%</span></div><div class="mkt-row"><span class="mkt-label">TAMAR</span><span class="mkt-value">22,13%</span></div></div>
+    </div>
+  </div></div>
+  <div class="sec"><div class="sec-inner">
+    <div class="sec-bar"><span class="sec-bar-title">Novedades de la Semana</span></div>
+    <div class="news-list">
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">PBI</span><div class="news-body-text">El producto interno bruto registró una expansión trimestral del 0,7% y un avance interanual del 2,3% durante el primer período del año. El desempeño económico fue impulsado por el dinamismo de las exportaciones, con fuertes subas en los sectores agropecuario y minero. En contraposición, la inversión fija y la actividad manufacturera sufrieron caídas que actuaron como el principal freno para una mayor aceleración de la actividad.</div></span></div>
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Compras BCRA</span><div class="news-body-text">La entidad monetaria adquirió 50 millones de dólares en la última rueda de operaciones, representando el 8,1% del movimiento total del mercado oficial. De esta forma, el saldo favorable de intervenciones cambiarias se elevó a 11.040 millones de dólares en lo que va del año.</div></span></div>
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">MSCI</span><div class="news-body-text">MSCI no incluyó a la plaza local en su última revisión anual de clasificación de mercados financieros globales. De esta manera, el país queda sin modificaciones en su condición actual y posterga la posibilidad de una reclasificación formal hacia las categorías de frontera o emergente. Esta decisión mantendrá transitoriamente estables las condiciones de acceso para ciertos fondos de inversión internacionales que replican estos índices de referencia.</div></span></div>
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Cuenta Corriente</span><div class="news-body-text">El balance de cuenta corriente del primer trimestre arrojó un saldo negativo de 1650 millones de dólares, una cifra que muestra una fuerte mejora interanual frente al bache del mismo lapso de 2025. El superávit comercial de bienes fue absorbido por el déficit de servicios y los giros de rentas, lo que elevó la deuda externa bruta total a 321 800 millones de dólares. No obstante, el bache financiero fue cubierto por ingresos de capital, destacándose un fuerte incremento de la inversión extranjera en títulos públicos en moneda local hasta máximos de 2022.</div></span></div>
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Indice de Confianza</span><div class="news-body-text">El Índice de Confianza en el Gobierno (ICG), medido por la Universidad Torcuato Di Tella, registró un incremento mensual del 3,9% en junio, marcando el primer avance positivo de este año. La medición se ubicó en los 2,07 puntos, manteniendo una contracción en la comparación interanual y respecto a los máximos alcanzados a finales de 2024. A nivel regional, la mejora fue traccionada de forma principal por la recuperación de las expectativas en el Gran Buenos Aires.</div></span></div>
+    <div class="news-item"><span class="news-dash">—</span><span class="news-body"><span class="news-tag">Super RIGI</span><div class="news-body-text">La Cámara de Diputados otorgó media sanción al nuevo régimen fiscal diseñado para atraer inversiones superiores a los 1000 millones de dólares en sectores tecnológicos y de energías limpias. El proyecto de ley reduce el impuesto a las ganancias al 15%, elimina los aranceles de importación y retenciones desde el inicio de las operaciones, y asegura estabilidad regulatoria por tres décadas. A diferencia del marco normativo previo, esta iniciativa no impone obligaciones de contratación o insumos de origen nacional y pasa ahora al Senado para su tratamiento definitivo.</div></span></div>
+    </div>
+  </div></div>
+  <div class="sec"><div class="sec-inner alt">
+    <div class="sec-bar"><span class="sec-bar-title">Bopreales</span><span class="sec-bar-sub">BCRA · Hard Dollar</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Especie</th><th>Paridad</th><th>YTM</th><th>MD</th><th>Vencimiento</th></tr></thead>
+      <tbody>
+        <tr><td>BPOA7</td><td>98,40%</td><td>6,70%</td><td>1</td><td>31-oct-27</td></tr>
+        <tr><td>BPOB7</td><td>97,90%</td><td>7,20%</td><td>1</td><td>31-oct-27</td></tr>
+        <tr><td>BPOC7</td><td>98,40%</td><td>6,70%</td><td>1</td><td>31-oct-27</td></tr>
+        <tr><td>BPOD7</td><td>98,00%</td><td>7,10%</td><td>1</td><td>31-oct-27</td></tr>
+        <tr><td>BPOA8</td><td>89,60%</td><td>8,20%</td><td>2,1</td><td>30-oct-28</td></tr>
+        <tr><td>BPOB8</td><td>89,30%</td><td>8,30%</td><td>2,1</td><td>30-oct-28</td></tr>
+      </tbody></table></div>
+  </div></div>
+  <div class="sec"><div class="sec-inner">
+    <div class="sec-bar"><span class="sec-bar-title">Globales &amp; Bonares</span><span class="sec-bar-sub">Soberanos · Hard Dollar</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Especie</th><th>Paridad</th><th>YTM</th><th>MD</th><th>Vencimiento</th><th>Ley</th></tr></thead>
+      <tbody>
+        <tr><td>AO27</td><td>99,70%</td><td>6,40%</td><td>1,3</td><td>31-oct-27</td><td>ARG</td></tr>
+        <tr><td>AO28</td><td>94,00%</td><td>9,20%</td><td>2,1</td><td>31-oct-28</td><td>ARG</td></tr>
+        <tr><td>AN29</td><td>92,10%</td><td>9,50%</td><td>3</td><td>30-nov-29</td><td>ARG</td></tr>
+        <tr><td>AL29</td><td>89,50%</td><td>8,80%</td><td>1,4</td><td>9-jul-29</td><td>ARG</td></tr>
+        <tr><td>GD29</td><td>91,30%</td><td>7,30%</td><td>1,4</td><td>9-jul-29</td><td>NY</td></tr>
+        <tr><td>AL30</td><td>86,60%</td><td>9,00%</td><td>1,8</td><td>9-jul-30</td><td>ARG</td></tr>
+        <tr><td>GD30</td><td>88,70%</td><td>7,70%</td><td>1,9</td><td>9-jul-30</td><td>NY</td></tr>
+        <tr><td>AL35</td><td>77,50%</td><td>9,70%</td><td>5,3</td><td>9-jul-35</td><td>ARG</td></tr>
+        <tr><td>GD35</td><td>80,20%</td><td>9,00%</td><td>5,3</td><td>9-jul-35</td><td>NY</td></tr>
+        <tr><td>AE38</td><td>79,80%</td><td>10,00%</td><td>4,5</td><td>9-ene-38</td><td>ARG</td></tr>
+        <tr><td>GD38</td><td>83,70%</td><td>8,90%</td><td>4,6</td><td>9-ene-38</td><td>NY</td></tr>
+        <tr><td>AL41</td><td>72,90%</td><td>9,60%</td><td>5,8</td><td>9-jul-41</td><td>ARG</td></tr>
+        <tr><td>GD41</td><td>74,90%</td><td>9,10%</td><td>5,9</td><td>9-jul-41</td><td>NY</td></tr>
+        <tr><td>GD46</td><td>76,80%</td><td>8,90%</td><td>6,1</td><td>9-jul-46</td><td>NY</td></tr>
+      </tbody></table></div>
+    <div class="chart-block"><div class="chart-block-title">Curva Soberanos · YTM vs MD</div>
+      <div class="chart-canvas-wrap" style="height:320px;"><canvas id="chartSob"></canvas></div></div>
+  </div></div>
+  <div class="sec"><div class="sec-inner alt">
+    <div class="sec-bar"><span class="sec-bar-title">Lecaps &amp; Boncaps</span><span class="sec-bar-sub">Tasa Fija · ARS</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Ticker</th><th>TNA</th><th>TEA</th><th>MD</th><th>Vencimiento</th></tr></thead>
+      <tbody>
+        <tr><td colspan="5" class="subhdr">Letras Capitalizables</td></tr>
+        <tr><td>S17L6</td><td>—</td><td>22,95%</td><td>0</td><td>17-jul-26</td></tr>
+        <tr><td>S31L6</td><td>—</td><td>21,92%</td><td>0,1</td><td>31-jul-26</td></tr>
+        <tr><td>S14G6</td><td>—</td><td>23,72%</td><td>0,1</td><td>14-ago-26</td></tr>
+        <tr><td>S31G6</td><td>—</td><td>22,62%</td><td>0,1</td><td>31-ago-26</td></tr>
+        <tr><td>S15S6</td><td>—</td><td>24,54%</td><td>0,2</td><td>15-sep-26</td></tr>
+        <tr><td>S30S6</td><td>—</td><td>24,50%</td><td>0,2</td><td>30-sep-26</td></tr>
+        <tr><td>S30O6</td><td>—</td><td>24,87%</td><td>0,3</td><td>30-oct-26</td></tr>
+        <tr><td>S30N6</td><td>—</td><td>24,15%</td><td>0,4</td><td>30-nov-26</td></tr>
+        <tr><td colspan="5" class="subhdr">Bonos Capitalizables</td></tr>
+        <tr><td>T30J6</td><td>—</td><td>27,28%</td><td>0</td><td>30-jun-26</td></tr>
+        <tr><td>T15E7</td><td>—</td><td>23,65%</td><td>0,5</td><td>15-ene-27</td></tr>
+        <tr><td>T30A7</td><td>—</td><td>25,16%</td><td>0,7</td><td>30-abr-27</td></tr>
+        <tr><td>T31Y7</td><td>—</td><td>25,38%</td><td>0,8</td><td>31-may-27</td></tr>
+        <tr><td>T30J7</td><td>—</td><td>24,68%</td><td>0,9</td><td>30-jun-27</td></tr>
+      </tbody></table></div>
+    <div class="chart-block"><div class="chart-block-title">Curva Letras del Tesoro · YTM vs MD</div>
+      <div class="chart-canvas-wrap" style="height:320px;"><canvas id="chartLec"></canvas></div></div>
+  </div></div>
+  <div class="sec"><div class="sec-inner">
+    <div class="sec-bar"><span class="sec-bar-title">Boncer</span><span class="sec-bar-sub">Ajuste CER</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Ticker</th><th>Paridad</th><th>YTM real</th><th>MD</th><th>Vencimiento</th></tr></thead>
+      <tbody>
+        <tr><td>TZX26</td><td>100,20%</td><td>-57,50%</td><td>0</td><td>30-jun-26</td></tr>
+        <tr><td>X31L6</td><td>100,40%</td><td>-3,90%</td><td>0,1</td><td>31-jul-26</td></tr>
+        <tr><td>X30S6</td><td>100,20%</td><td>0,00%</td><td>0,3</td><td>30-sep-26</td></tr>
+        <tr><td>TZXO6</td><td>99,70%</td><td>1,30%</td><td>0,4</td><td>30-oct-26</td></tr>
+        <tr><td>TX26</td><td>20,00%</td><td>2,00%</td><td>0,4</td><td>9-nov-26</td></tr>
+        <tr><td>X30N6</td><td>99,10%</td><td>2,20%</td><td>0,4</td><td>30-nov-26</td></tr>
+        <tr><td>TZXD6</td><td>98,80%</td><td>2,60%</td><td>0,5</td><td>15-dic-26</td></tr>
+        <tr><td>TZXM7</td><td>97,30%</td><td>3,80%</td><td>0,8</td><td>31-mar-27</td></tr>
+        <tr><td>TZXA7</td><td>96,40%</td><td>3,60%</td><td>0,8</td><td>30-abr-27</td></tr>
+        <tr><td>TZXY7</td><td>96,80%</td><td>3,80%</td><td>0,9</td><td>30-may-27</td></tr>
+        <tr><td>TZX27</td><td>95,30%</td><td>4,30%</td><td>1</td><td>30-jun-27</td></tr>
+        <tr><td>TZXS7</td><td>101,60%</td><td>5,60%</td><td>1,2</td><td>30-sep-27</td></tr>
+        <tr><td>TZXD7</td><td>91,60%</td><td>6,60%</td><td>1,4</td><td>15-dic-27</td></tr>
+        <tr><td>TZXM8</td><td>98,50%</td><td>7,60%</td><td>1,7</td><td>31-mar-28</td></tr>
+        <tr><td>TZX28</td><td>85,80%</td><td>7,90%</td><td>2</td><td>30-jun-28</td></tr>
+        <tr><td>TZXS8</td><td>91,90%</td><td>8,00%</td><td>2,2</td><td>29-sep-28</td></tr>
+        <tr><td>TX28</td><td>47,40%</td><td>2,25%</td><td>2,3</td><td>9-nov-28</td></tr>
+        <tr><td>TZXM9</td><td>89,20%</td><td>8,30%</td><td>2,7</td><td>28-mar-29</td></tr>
+        <tr><td>TX31</td><td>84,00%</td><td>2,50%</td><td>2,8</td><td>30-nov-31</td></tr>
+        <tr><td>DICP</td><td>92,00%</td><td>8,00%</td><td>3</td><td>31-dic-33</td></tr>
+        <tr><td>PARP</td><td>65,10%</td><td>8,30%</td><td>6,5</td><td>31-dic-38</td></tr>
+        <tr><td>CUAP</td><td>59,30%</td><td>3,31%</td><td>3,3</td><td>31-dic-45</td></tr>
+      </tbody></table></div>
+    <div class="chart-block"><div class="chart-block-title">Curva Boncer · YTM real vs MD</div>
+      <div class="chart-canvas-wrap" style="height:320px;"><canvas id="chartCer"></canvas></div></div>
+  </div></div>
+  <div class="sec"><div class="sec-inner alt">
+    <div class="sec-bar"><span class="sec-bar-title">Obligaciones Negociables</span><span class="sec-bar-sub">Hard Dollar</span></div>
+    <div class="tbl-wrap" style="padding-top:16px;"><table>
+      <thead><tr><th>Emisor</th><th>Ticker</th><th>Precio</th><th>Paridad</th><th>YTM</th><th>DM</th><th>Vto.</th><th>Industria</th></tr></thead>
+      <tbody>
+        <tr><td>Aluar</td><td>LMS7D</td><td>103,9</td><td>114,82%</td><td>3,60%</td><td>1,1</td><td>12-oct-28</td><td>Mat. Básicos</td></tr>
+        <tr><td>Arcor</td><td>RCCRD</td><td>104,4</td><td>103,30%</td><td>2,73%</td><td>0,8</td><td>9-may-27</td><td>Alimentos</td></tr>
+        <tr><td>Arcor</td><td>RC1CD</td><td>108,1</td><td>107,85%</td><td>6,10%</td><td>4,7</td><td>31-jul-33</td><td>Alimentos</td></tr>
+        <tr><td>Banco Galicia</td><td>BYCHD</td><td>106,1</td><td>106,04%</td><td>4,90%</td><td>2</td><td>10-oct-28</td><td>Financiero</td></tr>
+        <tr><td>CGC</td><td>CP36D</td><td>98,5</td><td>98,52%</td><td>7,90%</td><td>1,2</td><td>10-oct-27</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Cresud</td><td>CS47D</td><td>103,8</td><td>102,78%</td><td>5,77%</td><td>2,1</td><td>15-nov-28</td><td>Agro</td></tr>
+        <tr><td>Edenor</td><td>DNC3D</td><td>101,8</td><td>101,79%</td><td>5,00%</td><td>0,4</td><td>22-nov-26</td><td>Electricidad</td></tr>
+        <tr><td>Edenor</td><td>DNC5D</td><td>105,3</td><td>105,02%</td><td>6,90%</td><td>1,8</td><td>5-ago-28</td><td>Electricidad</td></tr>
+        <tr><td>Edenor</td><td>DNC7D</td><td>107,3</td><td>107,11%</td><td>7,30%</td><td>2,8</td><td>24-oct-30</td><td>Electricidad</td></tr>
+        <tr><td>IRSA</td><td>IRCND</td><td>104,2</td><td>101,51%</td><td>4,56%</td><td>1,2</td><td>23-oct-27</td><td>Real Estate</td></tr>
+        <tr><td>IRSA</td><td>IRCOD</td><td>104,2</td><td>104,08%</td><td>5,90%</td><td>2,8</td><td>23-oct-29</td><td>Real Estate</td></tr>
+        <tr><td>John Deere</td><td>HJCFD</td><td>101,5</td><td>100,45%</td><td>3,40%</td><td>0,3</td><td>21-oct-26</td><td>Financiero</td></tr>
+        <tr><td>John Deere</td><td>HJCID</td><td>101,2</td><td>101,23%</td><td>6,10%</td><td>0,8</td><td>27-may-27</td><td>Financiero</td></tr>
+        <tr><td>John Deere</td><td>HJCHD</td><td>104,2</td><td>100,88%</td><td>6,45%</td><td>1,4</td><td>17-ene-28</td><td>Financiero</td></tr>
+        <tr><td>John Deere</td><td>HJCGD</td><td>102</td><td>100,64%</td><td>6,27%</td><td>2,1</td><td>21-oct-28</td><td>Financiero</td></tr>
+        <tr><td>Loma Negra</td><td>LOC5D</td><td>103,8</td><td>103,67%</td><td>4,30%</td><td>1</td><td>24-jul-27</td><td>Construcción</td></tr>
+        <tr><td>PAE</td><td>PN34D</td><td>101,9</td><td>102,70%</td><td>3,40%</td><td>1,2</td><td>27-sep-27</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>PAE</td><td>PN37D</td><td>102,6</td><td>102,56%</td><td>5,10%</td><td>2,2</td><td>13-nov-28</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>PAE</td><td>PN35D</td><td>105,1</td><td>105,03%</td><td>5,30%</td><td>2,8</td><td>27-sep-29</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>PAE</td><td>PN36D</td><td>106,4</td><td>106,32%</td><td>5,90%</td><td>4,4</td><td>13-nov-31</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>PAE</td><td>PNXCD</td><td>110,3</td><td>110,13%</td><td>6,10%</td><td>3,9</td><td>30-abr-32</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCQD</td><td>108,8</td><td>105,66%</td><td>4,33%</td><td>1,9</td><td>6-ago-28</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCND</td><td>102,3</td><td>102,30%</td><td>4,70%</td><td>2,1</td><td>4-oct-28</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCMD</td><td>109,4</td><td>109,20%</td><td>5,90%</td><td>4,2</td><td>10-sep-31</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pampa E.</td><td>MGCOD</td><td>107,2</td><td>107,18%</td><td>6,80%</td><td>6,2</td><td>16-dic-34</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pluspetrol</td><td>PLC1D</td><td>102,3</td><td>102,27%</td><td>4,50%</td><td>1,5</td><td>27-ene-28</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pluspetrol</td><td>PLC3D</td><td>103,6</td><td>103,45%</td><td>5,20%</td><td>1,6</td><td>30-abr-28</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Pluspetrol</td><td>PLC2D</td><td>105,8</td><td>106,32%</td><td>5,80%</td><td>3,1</td><td>27-ene-30</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>T. Naranja</td><td>T641D</td><td>104,7</td><td>103,18%</td><td>3,92%</td><td>0,8</td><td>30-abr-27</td><td>Financiero</td></tr>
+        <tr><td>Tecpetrol</td><td>TTC8D</td><td>101,4</td><td>101,34%</td><td>4,00%</td><td>1,2</td><td>24-oct-27</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Tecpetrol</td><td>TTC9D</td><td>103,7</td><td>103,64%</td><td>5,60%</td><td>2,9</td><td>24-oct-29</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Tecpetrol</td><td>TTCAD</td><td>104</td><td>107,47%</td><td>6,90%</td><td>4,4</td><td>22-ene-33</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>Telecom</td><td>TLCOD</td><td>103,3</td><td>103,24%</td><td>5,60%</td><td>2,2</td><td>28-nov-28</td><td>Telecom</td></tr>
+        <tr><td>TGS</td><td>TSC3D</td><td>106</td><td>109,06%</td><td>7,20%</td><td>4</td><td>24-jul-31</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>YPF</td><td>YMCID</td><td>111,1</td><td>111,09%</td><td>2,40%</td><td>1,6</td><td>30-jun-29</td><td>Oil &amp; Gas</td></tr>
+        <tr><td>YPF</td><td>YMCJD</td><td>105,4</td><td>105,28%</td><td>6,00%</td><td>4,6</td><td>30-sep-33</td><td>Oil &amp; Gas</td></tr>
+      </tbody></table></div>
+    <div class="chart-block"><div class="chart-block-title">Curva ONs · YTM vs DM</div>
+      <div class="chart-canvas-wrap" style="height:500px;"><canvas id="chartONs"></canvas></div></div>
+  </div></div>
+  <div class="disclaimer">
+    Este reporte fue elaborado con propósito puramente informativo. Las opiniones vertidas sobre predicciones de mercado de cualquier tipo no deben asumirse como invitaciones ni sugerencias de comprar o vender activo alguno. La información ha sido compilada de fuentes consideradas confiables y si bien se han tomado recaudos razonables, no podemos garantizar plena exactitud o exhaustividad de la información ni de los resultados analíticos. Todas las opiniones y estimaciones constituyen nuestro juicio al momento de publicación y están sujetas a cambio sin previo aviso.
+  </div>
+</main>
+<footer class="footer"><p>Alpha Investment · www.alphainvestment.com.ar · 6 de julio de 2026</p></footer>
+<div class="legal-final">Documento para uso interno/informativo únicamente. No constituye una oferta de compra o venta de valores negociables.</div>
+<script>
+Chart.register(ChartDataLabels);
+Chart.defaults.font.family = "'Plus Jakarta Sans',system-ui,sans-serif";
+Chart.defaults.font.size = 10;
+Chart.defaults.color = 'rgba(255,255,255,0.60)';
+const GRID = 'rgba(0,98,222,0.16)';
+const DOT  = '#0062DE';
+function makeChart(id, pts) {
+  const ctx = document.getElementById(id);
+  if (!ctx) return;
+  new Chart(ctx, {
+    type: 'scatter',
+    data: { datasets: [{ data: pts, backgroundColor: DOT, pointRadius: 5, pointHoverRadius: 7 }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      layout: { padding: { top: 26, right: 30, bottom: 4, left: 4 } },
+      plugins: {
+        legend: { display: false },
+        tooltip: { backgroundColor: '#002C65', borderColor: 'rgba(255,255,255,0.09)', borderWidth: 1, titleColor: '#ffffff', bodyColor: 'rgba(255,255,255,0.60)',
+          callbacks: { label: c => `${c.raw.label}: ${c.raw.y.toFixed(1)}%` } },
+        datalabels: { color: 'rgba(255,255,255,0.88)', font: { size: 9.5 }, formatter: v => v.label, anchor: 'end', align: 'top', offset: 3, clip: false }
+      },
+      scales: {
+        x: { grid:{color:GRID,lineWidth:0.5}, ticks:{color:'rgba(255,255,255,0.40)',font:{size:10}} },
+        y: { grid:{color:GRID,lineWidth:0.5}, ticks:{color:'rgba(255,255,255,0.40)',font:{size:10},callback:v=>v.toFixed(1)+'%'} }
+      }
+    }
+  });
+}
+makeChart('chartSob', [{x:1.26,y:6.4,label:'AO27'},{x:2.09,y:9.2,label:'AO28'},{x:2.97,y:9.5,label:'AN29'},{x:1.39,y:8.8,label:'AL29'},{x:1.42,y:7.3,label:'GD29'},{x:1.82,y:9,label:'AL30'},{x:1.85,y:7.7,label:'GD30'},{x:5.27,y:9.7,label:'AL35'},{x:5.32,y:9,label:'GD35'},{x:4.5,y:10,label:'AE38'},{x:4.62,y:8.9,label:'GD38'},{x:5.78,y:9.6,label:'AL41'},{x:5.86,y:9.1,label:'GD41'},{x:6.14,y:8.9,label:'GD46'}]);
+makeChart('chartLec', [{x:0.03,y:22.95,label:'S17L6'},{x:0.06,y:21.92,label:'S31L6'},{x:0.1,y:23.72,label:'S14G6'},{x:0.14,y:22.62,label:'S31G6'},{x:0.17,y:24.54,label:'S15S6'},{x:0.21,y:24.5,label:'S30S6'},{x:0.28,y:24.87,label:'S30O6'},{x:0.36,y:24.15,label:'S30N6'},{x:0,y:27.28,label:'T30J6'},{x:0.47,y:23.65,label:'T15E7'},{x:0.73,y:25.16,label:'T30A7'},{x:0.8,y:25.38,label:'T31Y7'},{x:0.88,y:24.68,label:'T30J7'}]);
+makeChart('chartCer', [{x:0.1,y:-3.9,label:'X31L6'},{x:0.3,y:0,label:'X30S6'},{x:0.4,y:1.3,label:'TZXO6'},{x:0.4,y:2,label:'TX26'},{x:0.4,y:2.2,label:'X30N6'},{x:0.5,y:2.6,label:'TZXD6'},{x:0.8,y:3.8,label:'TZXM7'},{x:0.8,y:3.6,label:'TZXA7'},{x:0.9,y:3.8,label:'TZXY7'},{x:1,y:4.3,label:'TZX27'},{x:1.2,y:5.6,label:'TZXS7'},{x:1.4,y:6.6,label:'TZXD7'},{x:1.7,y:7.6,label:'TZXM8'},{x:2,y:7.9,label:'TZX28'},{x:2.2,y:8,label:'TZXS8'},{x:2.25,y:2.25,label:'TX28'},{x:2.7,y:8.3,label:'TZXM9'},{x:2.8,y:2.5,label:'TX31'},{x:3,y:8,label:'DICP'},{x:3.31,y:3.31,label:'CUAP'}]);
+makeChart('chartONs', [{x:1.1,y:3.6,label:'Aluar 28'},{x:0.8140855838820453,y:2.73,label:'Arcor 27'},{x:4.7,y:6.1,label:'Arcor 33'},{x:2,y:4.9,label:'Banco Galicia 28'},{x:1.2,y:7.9,label:'CGC 27'},{x:2.1413498957676946,y:5.77,label:'Cresud 28'},{x:0.4,y:5,label:'Edenor 26'},{x:1.8,y:6.9,label:'Edenor 28'},{x:2.8,y:7.3,label:'Edenor 30'},{x:1.2097769920031949,y:4.56,label:'IRSA 27'},{x:2.8,y:5.9,label:'IRSA 29'},{x:0.2882491417275783,y:3.4,label:'John Deere 26'},{x:0.8,y:6.1,label:'John Deere 27'},{x:1.3906289432407595,y:6.45,label:'John Deere 28'},{x:2.0784996312198323,y:6.27,label:'John Deere 28'},{x:1,y:4.3,label:'Loma Negra 27'},{x:1.2,y:3.4,label:'PAE 27'},{x:2.2,y:5.1,label:'PAE 28'},{x:2.8,y:5.3,label:'PAE 29'},{x:4.4,y:5.9,label:'PAE 31'},{x:3.9,y:6.1,label:'PAE 32'},{x:1.884334732397791,y:4.33,label:'Pampa E. 28'},{x:2.1,y:4.7,label:'Pampa E. 28'},{x:4.2,y:5.9,label:'Pampa E. 31'},{x:6.2,y:6.8,label:'Pampa E. 34'},{x:1.5,y:4.5,label:'Pluspetrol 28'},{x:1.6,y:5.2,label:'Pluspetrol 28'},{x:3.1,y:5.8,label:'Pluspetrol 30'},{x:0.7731683853900121,y:3.92,label:'T. Naranja 27'},{x:1.2,y:4,label:'Tecpetrol 27'},{x:2.9,y:5.6,label:'Tecpetrol 29'},{x:4.4,y:6.9,label:'Tecpetrol 33'},{x:2.2,y:5.6,label:'Telecom 28'},{x:4,y:7.2,label:'TGS 31'},{x:1.6,y:2.4,label:'YPF 29'},{x:4.6,y:6,label:'YPF 33'}]);
+</script>
+</body>
+</html>

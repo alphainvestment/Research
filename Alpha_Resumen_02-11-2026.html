@@ -185,8 +185,6 @@ tbody td:first-child{text-align:left;padding-left:0;font-weight:500;color:var(--
       <thead><tr><th>Ticker</th><th>TNA</th><th>TEA</th><th>MD</th><th>Vencimiento</th></tr></thead>
       <tbody>
         <tr><td colspan="5" class="subhdr">Letras Capitalizables</td></tr>
-        <tr><td>S30S6</td><td>19,26%</td><td>21,55%</td><td>0</td><td>30-sep-26</td></tr>
-        <tr><td>S30O6</td><td>16,98%</td><td>18,73%</td><td>0</td><td>30-oct-26</td></tr>
         <tr><td>S30N6</td><td>23,06%</td><td>26,07%</td><td>0,1</td><td>30-nov-26</td></tr>
         <tr><td colspan="5" class="subhdr">Bonos Capitalizables</td></tr>
         <tr><td>T15E7</td><td>24,50%</td><td>27,01%</td><td>0,2</td><td>15-ene-27</td></tr>
@@ -202,9 +200,6 @@ tbody td:first-child{text-align:left;padding-left:0;font-weight:500;color:var(--
     <div class="tbl-wrap" style="padding-top:16px;"><table>
       <thead><tr><th>Ticker</th><th>Paridad</th><th>YTM real</th><th>MD</th><th>Vencimiento</th></tr></thead>
       <tbody>
-        <tr><td>X30S6</td><td>100,00%</td><td>0,10%</td><td>0</td><td>30-sep-26</td></tr>
-        <tr><td>TZXO6</td><td>100,10%</td><td>-3,00%</td><td>0</td><td>30-oct-26</td></tr>
-        <tr><td>TX26</td><td>20,10%</td><td>26,70%</td><td>0</td><td>9-nov-26</td></tr>
         <tr><td>X30N6</td><td>99,70%</td><td>3,40%</td><td>0,1</td><td>30-nov-26</td></tr>
         <tr><td>TZXD6</td><td>99,60%</td><td>3,60%</td><td>0,1</td><td>15-dic-26</td></tr>
         <tr><td>TZXM7</td><td>98,90%</td><td>2,90%</td><td>0,4</td><td>31-mar-27</td></tr>
@@ -306,8 +301,8 @@ function makeChart(id, pts) {
   });
 }
 makeChart('chartSob', [{x:0.96,y:2.7,label:'AO27'},{x:1.76,y:13,label:'AO28'},{x:2.54,y:14.2,label:'AN29'},{x:1.3,y:9.4,label:'AL29'},{x:1.26,y:12.8,label:'GD29'},{x:1.68,y:11.6,label:'AL30'},{x:1.66,y:12.8,label:'GD30'},{x:4.84,y:12.8,label:'AL35'},{x:4.85,y:12.7,label:'GD35'},{x:3.94,y:13.2,label:'AE38'},{x:3.97,y:12.9,label:'GD38'},{x:5.08,y:12.6,label:'AL41'},{x:5.1,y:12.4,label:'GD41'},{x:5.31,y:12.3,label:'GD46'}]);
-makeChart('chartLec', [{x:0,y:21.55,label:'S30S6'},{x:0.03,y:18.73,label:'S30O6'},{x:0.07,y:26.07,label:'S30N6'},{x:0.18,y:27.01,label:'T15E7'},{x:0.43,y:28.89,label:'T30A7'},{x:0.5,y:29.27,label:'T31Y7'},{x:0.57,y:29.12,label:'T30J7'}]);
-makeChart('chartCer', [{x:0,y:0.1,label:'X30S6'},{x:0,y:-3,label:'TZXO6'},{x:0,y:26.7,label:'TX26'},{x:0.1,y:3.4,label:'X30N6'},{x:0.1,y:3.6,label:'TZXD6'},{x:0.4,y:2.9,label:'TZXM7'},{x:0.5,y:3.1,label:'TZXA7'},{x:0.6,y:3.4,label:'TZXY7'},{x:0.6,y:3.8,label:'TZX27'},{x:0.9,y:5.5,label:'TZXS7'},{x:1.1,y:7.3,label:'TZXD7'},{x:1.4,y:8.5,label:'TZXM8'},{x:1.6,y:10,label:'TZX28'},{x:1.8,y:10.2,label:'TZXS8'},{x:0.9,y:7.4,label:'TX28'},{x:2.3,y:10.1,label:'TZXM9'},{x:2.4,y:11.6,label:'TX31'},{x:2.8,y:11.3,label:'DICP'}]);
+makeChart('chartLec', [{x:0.07,y:26.07,label:'S30N6'},{x:0.18,y:27.01,label:'T15E7'},{x:0.43,y:28.89,label:'T30A7'},{x:0.5,y:29.27,label:'T31Y7'},{x:0.57,y:29.12,label:'T30J7'}]);
+makeChart('chartCer', [{x:0.1,y:3.4,label:'X30N6'},{x:0.1,y:3.6,label:'TZXD6'},{x:0.4,y:2.9,label:'TZXM7'},{x:0.5,y:3.1,label:'TZXA7'},{x:0.6,y:3.4,label:'TZXY7'},{x:0.6,y:3.8,label:'TZX27'},{x:0.9,y:5.5,label:'TZXS7'},{x:1.1,y:7.3,label:'TZXD7'},{x:1.4,y:8.5,label:'TZXM8'},{x:1.6,y:10,label:'TZX28'},{x:1.8,y:10.2,label:'TZXS8'},{x:0.9,y:7.4,label:'TX28'},{x:2.3,y:10.1,label:'TZXM9'},{x:2.4,y:11.6,label:'TX31'},{x:2.8,y:11.3,label:'DICP'}]);
 makeChart('chartONs', [{x:1,y:1.6,label:'Aluar 28'},{x:0.49087746369781854,y:3.37,label:'Arcor 27'},{x:4.6,y:6.5,label:'Arcor 33'},{x:1.8,y:4.6,label:'Banco Galicia 28'},{x:0.9,y:5.9,label:'CGC 27'},{x:1.8208824764612357,y:6.1,label:'Cresud 28'},{x:0.1,y:6.6,label:'Edenor 26'},{x:1.6,y:8,label:'Edenor 28'},{x:2.5,y:9.3,label:'Edenor 30'},{x:0.9216582043842881,y:5.06,label:'IRSA 27'},{x:2.6,y:6.1,label:'IRSA 29'},{x:0.5,y:4.1,label:'John Deere 27'},{x:1.1277862866516584,y:5.45,label:'John Deere 28'},{x:1.8507446329792872,y:3.2,label:'John Deere 28'},{x:0.7,y:4.6,label:'Loma Negra 27'},{x:0.9,y:3.9,label:'PAE 27'},{x:1.8,y:5.1,label:'PAE 28'},{x:2.6,y:5.4,label:'PAE 29'},{x:4.1,y:6.2,label:'PAE 31'},{x:3.8,y:5.3,label:'PAE 32'},{x:1.629916377520554,y:4.01,label:'Pampa E. 28'},{x:1.8,y:5.4,label:'Pampa E. 28'},{x:4,y:6.5,label:'Pampa E. 31'},{x:5.8,y:7.2,label:'Pampa E. 34'},{x:1.2,y:4.6,label:'Pluspetrol 28'},{x:1.4,y:5.3,label:'Pluspetrol 28'},{x:2.9,y:5.8,label:'Pluspetrol 30'},{x:0.5005626749558342,y:-5.92,label:'T. Naranja 27'},{x:0.9,y:4,label:'Tecpetrol 27'},{x:2.7,y:5.8,label:'Tecpetrol 29'},{x:4.2,y:7.2,label:'Tecpetrol 33'},{x:1.9,y:5.6,label:'Telecom 28'},{x:3.8,y:6.2,label:'TGS 31'},{x:1.3,y:2.6,label:'YPF 29'},{x:4.4,y:7,label:'YPF 33'}]);
 </script>
 </body>
